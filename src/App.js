@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Header from './components/Header';
 import LoginForm from './components/LoginForm';
+import Dashboard from './components/Dashboard';
 import { fetchUser } from './apiCalls';
 import './App.css';
 
@@ -25,7 +26,10 @@ class App extends Component {
     return (
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} />
-        {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} getUserInfo={this.getUserInfo} />}
+        <main>
+          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} getUserInfo={this.getUserInfo} />}
+          {this.state.isLoggedIn && <Dashboard user={this.state.user}/>}
+        </main>
       </div>
     );
   }
