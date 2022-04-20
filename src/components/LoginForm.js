@@ -19,12 +19,16 @@ class LoginForm extends Component {
 
     if (this.state.username === 'mycophile5044' && this.state.password === 'fungi') {
       this.props.completeLogin();
-      this.setState({ error: null });
+      this.clearForm();
     } else if (!this.state.username || !this.state.password) {
       this.setState({ error: 'Please fill in both fields.' })
     } else {
       this.setState({ error: 'Invalid username or password. Please try again.' })
     }
+  }
+
+  clearForm = () => {
+    this.setState({ username: '', password: '', error: null });
   }
 
   render() {
