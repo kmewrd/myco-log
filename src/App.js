@@ -14,12 +14,12 @@ class App extends Component {
     }
   }
 
-  completeLogin = () => {
-    this.setState({ isLoggedIn: true });
+  completeLogin = username => {
+    this.getUserInfo(username);
   }
 
   getUserInfo = username => {
-    fetchUser(username).then(data => this.setState({ user: data }))
+    fetchUser(username).then(data => this.setState({ user: data, isLoggedIn: true }))
   }
 
   render() {
