@@ -1,8 +1,9 @@
 import React from 'react';
+import Sighting from './Sighting';
 
 const Dashboard = ({ user }) => {
-  const sightings = user.sightings;
-  console.log(sightings);
+  const sightings = user.sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} notes={sighting.notes}/>)
+
   return (
     <div>
       <section>
@@ -15,7 +16,7 @@ const Dashboard = ({ user }) => {
       </section>
       <section>
         <h2>My Sightings</h2>
-
+        {sightings}
       </section>
     </div>
   )
