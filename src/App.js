@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
-import { fetchUser } from './apiCalls';
+import { fetchUser, fetchSightings } from './apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -10,12 +10,14 @@ class App extends Component {
     super();
     this.state = {
       isLoggedIn: false,
-      user: null
+      user: null,
+      sightings: [],
+      error: null
     }
   }
 
   completeLogin = username => {
-    this.getUserInfo(username);
+    this.getUser(username);
   }
 
   logout = e => {
@@ -23,8 +25,19 @@ class App extends Component {
     this.setState({ isLoggedIn: false, user: null });
   }
 
-  getUserInfo = username => {
-    fetchUser(username).then(data => this.setState({ user: data, isLoggedIn: true }))
+  getUser = username => {
+    fetchUser(username)
+      .then(data => this.setState({ user: data, isLoggedIn: true }))
+      .catch(err => console.log(err))
+  }
+
+  getSightings = () => {
+    fetchSightings()
+      .then(data => {
+        const mySightings = data.filter(sighting => sighting.userId === this.state.user.id);
+        this.setState({ sightings: mySightings });
+      })
+      .catch(err => this.setState({ error: 'Something went wrong.' }))
   }
 
   render() {
@@ -32,8 +45,8 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
-          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} getUserInfo={this.getUserInfo} />}
-          {this.state.isLoggedIn && <Dashboard user={this.state.user}/>}
+          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
+          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} getSightings={this.getSightings} />}
         </main>
       </div>
     );
