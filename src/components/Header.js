@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, logout }) => {
   return (
     <header>
       <h1>Mycophilia</h1>
-      {isLoggedIn && <p>Menu Placeholder</p>}
+      {isLoggedIn && <button onClick={e => logout(e)}>LOG OUT</button>}
     </header>
   )
 }

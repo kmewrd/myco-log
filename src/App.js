@@ -18,6 +18,11 @@ class App extends Component {
     this.getUserInfo(username);
   }
 
+  logout = e => {
+    e.preventDefault();
+    this.setState({ isLoggedIn: false, user: null });
+  }
+
   getUserInfo = username => {
     fetchUser(username).then(data => this.setState({ user: data, isLoggedIn: true }))
   }
@@ -25,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={this.state.isLoggedIn} />
+        <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
           {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} getUserInfo={this.getUserInfo} />}
           {this.state.isLoggedIn && <Dashboard user={this.state.user}/>}
