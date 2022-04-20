@@ -2,7 +2,7 @@ import React from 'react';
 import Sighting from './Sighting';
 
 const Dashboard = ({ user }) => {
-  const sightings = user.sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} notes={sighting.notes}/>)
+  const sightings = user.sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
 
   return (
     <div>
