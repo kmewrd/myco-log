@@ -27,17 +27,20 @@ class App extends Component {
 
   getUser = username => {
     fetchUser(username)
-      .then(data => this.setState({ user: data, isLoggedIn: true }))
+      .then(data => {
+        this.setState({ user: data })
+        this.getUserSightings(data);
+      })
       .catch(err => console.log(err))
   }
 
-  getSightings = () => {
+  getUserSightings = user => {
     fetchSightings()
       .then(data => {
-        const mySightings = data.filter(sighting => sighting.userId === this.state.user.id);
-        this.setState({ sightings: mySightings });
+        const userSightings = data.filter(sighting => sighting.userId === user.id);
+        this.setState({ sightings: userSightings, isLoggedIn: true })
       })
-      .catch(err => this.setState({ error: 'Something went wrong.' }))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -46,7 +49,7 @@ class App extends Component {
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
           {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
-          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} getSightings={this.getSightings} />}
+          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} />}
         </main>
       </div>
     );
