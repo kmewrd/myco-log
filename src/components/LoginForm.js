@@ -18,6 +18,7 @@ class LoginForm extends Component {
     e.preventDefault();
 
     if (this.state.username === 'mycophile5044' && this.state.password === 'fungi') {
+      this.props.getUserInfo(this.state.username);
       this.props.completeLogin();
       this.clearForm();
     } else if (!this.state.username || !this.state.password) {
