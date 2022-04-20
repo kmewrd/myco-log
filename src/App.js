@@ -22,7 +22,7 @@ class App extends Component {
 
   logout = e => {
     e.preventDefault();
-    this.setState({ isLoggedIn: false, user: null });
+    this.setState({ isLoggedIn: false, user: null, sightings: [] });
   }
 
   getUser = username => {
