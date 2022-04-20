@@ -38,6 +38,7 @@ class LoginForm extends Component {
         <h3>Please sign in.</h3>
         <input name='username' type='text' placeholder='Username' onChange={e => this.handleChange(e)} />
         <input name='password' type='password' placeholder='Password' onChange={e => this.handleChange(e)} />
+        {this.state.error && <p>{this.state.error}</p>}
         <button onClick={e => this.validateLogin(e)}>SIGN IN</button>
       </form>
     )
