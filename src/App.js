@@ -7,15 +7,19 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoggedIn: true
+      isLoggedIn: false
     }
+  }
+
+  completeLogin = () => {
+    this.setState({ isLoggedIn: true });
   }
 
   render() {
     return (
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} />
-        <LoginForm />
+        {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
       </div>
     );
   }

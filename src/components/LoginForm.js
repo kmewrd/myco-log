@@ -5,12 +5,26 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: null
     }
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  validateLogin = e => {
+    e.preventDefault();
+
+    if (this.state.username === 'mycophile5044' && this.state.password === 'fungi') {
+      this.props.completeLogin();
+      this.setState({ error: null });
+    } else if (!this.state.username || !this.state.password) {
+      this.setState({ error: 'Please fill in both fields.' })
+    } else {
+      this.setState({ error: 'Invalid username or password. Please try again.' })
+    }
   }
 
   render() {
@@ -20,7 +34,7 @@ class LoginForm extends Component {
         <h3>Please sign in.</h3>
         <input name='username' type='text' placeholder='Username' onChange={e => this.handleChange(e)} />
         <input name='password' type='password' placeholder='Password' onChange={e => this.handleChange(e)} />
-        <button>SIGN IN</button>
+        <button onClick={e => this.validateLogin(e)}>SIGN IN</button>
       </form>
     )
   }
