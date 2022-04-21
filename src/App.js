@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   completeLogin = username => {
-    this.getUser(username);
+    this.initializeData(username);
   }
 
   logout = e => {
@@ -25,20 +25,13 @@ class App extends Component {
     this.setState({ isLoggedIn: false, user: null, sightings: [] });
   }
 
-  getUser = username => {
-    fetchUser(username)
+  initializeData = username => {
+    Promise.all([fetchUser(username), fetchSightings()])
       .then(data => {
-        this.setState({ user: data })
-        this.getUserSightings(data);
-      })
-      .catch(err => console.log(err))
-  }
-
-  getUserSightings = user => {
-    fetchSightings()
-      .then(data => {
-        const userSightings = data.filter(sighting => sighting.userId === user.id);
-        this.setState({ sightings: userSightings, isLoggedIn: true })
+        const userId = username.split('mycophile').join('');
+        const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
+        
+        this.setState({ user: data[0], sightings: userSightings, isLoggedIn: true })
       })
       .catch(err => console.log(err))
   }
