@@ -3,6 +3,7 @@ import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
