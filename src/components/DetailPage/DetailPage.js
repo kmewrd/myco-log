@@ -23,6 +23,7 @@ const DetailPage = ({ id }) =>{
       <h2>{fungus.name}</h2>
       <h3>{fungus.scientificName}</h3>
       <p>{fungus.description}</p>
+      <button>Record Sighting</button>
     </section>
   )
 }
