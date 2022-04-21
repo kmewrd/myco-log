@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Sighting from './Sighting';
-import NavBar from './NavBar';
+import Sighting from '../Sighting/Sighting';
+import NavBar from '../NavBar/NavBar';
 
 const Dashboard = ({ user, sightings }) => {
   const [sightingsThisMonth, setSightingsThisMonth] = useState([]);

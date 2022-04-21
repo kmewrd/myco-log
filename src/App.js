@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import Header from './components/Header';
-import LoginForm from './components/LoginForm';
-import Dashboard from './components/Dashboard';
+import Header from './components/Header/Header';
+import LoginForm from './components/LoginForm/LoginForm';
+import Dashboard from './components/Dashboard/Dashboard';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';

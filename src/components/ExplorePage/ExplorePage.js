@@ -1,6 +1,6 @@
 import React from 'react';
-import ListItem from './ListItem';
-import SearchBar from './SearchBar';
+import ListItem from '../ListItem/ListItem';
+import SearchBar from '../SearchBar/SearchBar';
 
 const ExplorePage = ({ regionalFungi }) => {
   const fungi = regionalFungi.map(fungus => {
