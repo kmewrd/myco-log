@@ -30,7 +30,9 @@ const DetailPage = ({ id }) =>{
       <h3>{fungus.scientificName}</h3>
       <p>{fungus.description}</p>
       {regions}
-      <button>Record Sighting</button>
+      <Link to={`/explore/${id}/record-sighting`}>
+        <button>Record Sighting</button>
+      </Link>
     </section>
   )
 }
