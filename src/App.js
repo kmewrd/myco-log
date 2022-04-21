@@ -59,8 +59,8 @@ class App extends Component {
             <Route exact path='/explore'>
               {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
             </Route>
-            <Route exact path='/explore/:id' render={() => {
-              {this.state.isLoggedIn ? <DetailPage /> : <Redirect to='/' />}
+            <Route exact path='/explore/:id' render={({ match }) => {
+              {this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />}
             }} />
           </Switch>
         </main>

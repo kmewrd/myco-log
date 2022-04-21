@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ListItem.css';
 
 const ListItem = ({ id, name, scientificName, regions, description, characteristics, imageUrl }) => {
@@ -7,7 +8,9 @@ const ListItem = ({ id, name, scientificName, regions, description, characterist
       <img src={imageUrl} />
       <h3>{name}</h3>
       <h4>{scientificName}</h4>
-      <button>View</button>
+      <Link to={`/explore/${id}`}>
+        <button>View</button>
+      </Link>
     </div>
   )
 }
