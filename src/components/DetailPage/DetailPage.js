@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchFungus } from '../../apiCalls';
+import { Link } from 'react-router-dom';
 import './DetailPage.css';
 
 const DetailPage = ({ id }) =>{
@@ -15,6 +16,9 @@ const DetailPage = ({ id }) =>{
   
   return (
     <section>
+      <Link to='/explore'>
+        <button>Back</button>
+      </Link>
       <h2>{fungus.name}</h2>
     </section>
   )
