@@ -62,6 +62,9 @@ class App extends Component {
             <Route path='/explore/:id' render={({ match }) => {
               return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
             }} />
+            <Route path='/*'>
+              {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
+            </Route>
           </Switch>
         </main>
       </div>
