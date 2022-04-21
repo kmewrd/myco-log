@@ -1,4 +1,5 @@
 import React from 'react';
+import './ListItem.css';
 
 const ListItem = ({ id, name, scientificName, regions, description, characteristics, imageUrl }) => {
   return (

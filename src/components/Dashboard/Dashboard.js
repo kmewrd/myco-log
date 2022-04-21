@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
+import './Dashboard.css';
 
 const Dashboard = ({ user, sightings }) => {
   const [sightingsThisMonth, setSightingsThisMonth] = useState([]);

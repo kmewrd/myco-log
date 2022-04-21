@@ -1,4 +1,5 @@
 import React from 'react';
+import './Sightings.css';
 
 const Sighting = ({ date, location, notes }) => {
   // need methods that will find fungus by id
