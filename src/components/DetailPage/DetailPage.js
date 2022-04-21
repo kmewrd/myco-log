@@ -16,10 +16,13 @@ const DetailPage = ({ id }) =>{
   
   return (
     <section>
+      <img src={fungus.imageUrl} />
       <Link to='/explore'>
         <button>Back</button>
       </Link>
       <h2>{fungus.name}</h2>
+      <h3>{fungus.scientificName}</h3>
+      <p>{fungus.description}</p>
     </section>
   )
 }
