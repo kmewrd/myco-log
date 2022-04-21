@@ -13,6 +13,12 @@ const DetailPage = ({ id }) =>{
   const getFungus = () => {
     fetchFungus(id).then(data => setFungus(data)).catch(err => console.log(err));
   }
+
+  let regions;
+
+  if (fungus.regions) {
+    regions = fungus.regions.map(region => <div key={region}>{region}</div>)
+  }
   
   return (
     <section>
@@ -23,6 +29,7 @@ const DetailPage = ({ id }) =>{
       <h2>{fungus.name}</h2>
       <h3>{fungus.scientificName}</h3>
       <p>{fungus.description}</p>
+      {regions}
       <button>Record Sighting</button>
     </section>
   )
