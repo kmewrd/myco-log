@@ -7,6 +7,19 @@ class SearchBar extends Component {
       searchField: ''
     }
   }
+
+  handleChange = e => {
+    this.setState({ searchField: e.target.value })
+  }
+
+  render() {
+    return (
+      <form>
+        <input type='text' placeholder='Search...' value={this.state.searchField} onChange={e => handleChange(e)} />
+        <button>GO</button>
+      </form>
+    )
+  }
 }
 
 export default SearchBar;
