@@ -38,10 +38,7 @@ const SightingForm = ({ user, id }) => {
 
   return (
       <form>
-        <button onClick={(e) => {
-          e.preventDefault();
-          history.goBack()
-        }}>Close</button>
+        <button type='button' onClick={history.goBack}>Close</button>
         <input type='text' name='date' value={date} onChange={e => setDate(e.target.value)} />
         <input type='text' name='location' value={location} onChange={e => setLocation(e.target.value)} />
         <input type='text' name='notes' value={notes} onChange={e => setNotes(e.target.value)} />
