@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Header from './components/Header/Header';
 import LoginForm from './components/LoginForm/LoginForm';
 import Dashboard from './components/Dashboard/Dashboard';
+import ExplorePage from './components/ExplorePage/ExplorePage';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
@@ -48,11 +49,14 @@ class App extends Component {
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
           <Switch>
+            <Route exact path='/'>
+              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
+            </Route>
             <Route exact path='/dashboard'>
               {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
             </Route>
-            <Route exact path='/'>
-              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
+            <Route exact path='/explore'>
+              {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
             </Route>
           </Switch>
         </main>
