@@ -7,7 +7,8 @@ class SightingForm extends Component {
     this.state = {
       date: '',
       location: '',
-      notes: ''
+      notes: '',
+      error: null
     }
   }
 
@@ -27,12 +28,15 @@ class SightingForm extends Component {
         location: this.state.location,
         notes: this.state.notes
       }
+      // POST request goes here
       console.log(sighting);
+    } else {
+      this.setState({ error: 'Please complete all required fields.' })
     }
   }
 
   clearForm = () => {
-    this.setState({ date: '', location: '', notes: '' });
+    this.setState({ date: '', location: '', notes: '', error: '' });
   }
 
   render() {
@@ -42,6 +46,7 @@ class SightingForm extends Component {
         <input type='text' name='date' value={this.state.date} onChange={e => this.handleChange(e)} />
         <input type='text' name='location' value={this.state.location} onChange={e => this.handleChange(e)} />
         <input type='text' name='notes' value={this.state.notes} onChange={e => this.handleChange(e)} />
+        {this.state.error && <p>{this.state.error}</p>}
         <button onClick={e => this.submitSighting(e)}>SUBMIT</button>
       </form>
     )
