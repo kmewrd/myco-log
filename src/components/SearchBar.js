@@ -16,7 +16,7 @@ class SearchBar extends Component {
     return (
       <form>
         <input type='text' placeholder='Search...' value={this.state.searchField} onChange={e => handleChange(e)} />
-        <button>GO</button>
+        <button onClick={/*() => this.props.search(this.state.searchField)*/}>GO</button>
       </form>
     )
   }

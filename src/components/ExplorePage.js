@@ -17,10 +17,14 @@ const ExplorePage = ({ regionalFungi }) => {
     )
   })
 
+  // const search = searchTerms => {
+    
+  // }
+
   return (
     <section>
       <h2>Fungus Finder</h2>
-      <SearchBar />
+      <SearchBar search={search}/>
       <div>
         {fungi}
       </div>
