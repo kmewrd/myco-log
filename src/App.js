@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
-import { fetchUser, fetchSightings } from './apiCalls';
+import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +12,7 @@ class App extends Component {
       isLoggedIn: false,
       user: null,
       sightings: [],
+      regionalFungi: [],
       error: null
     }
   }
@@ -22,7 +23,7 @@ class App extends Component {
 
   logout = e => {
     e.preventDefault();
-    this.setState({ isLoggedIn: false, user: null, sightings: [] });
+    this.setState({ isLoggedIn: false, user: null, sightings: [], regionalFungi: [] });
   }
 
   initializeData = username => {
@@ -30,6 +31,10 @@ class App extends Component {
       .then(data => {
         const userId = username.split('mycophile').join('');
         const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
+
+        fetchRegionalFungi(data[0].region)
+          .then(data => this.setState({ regionalFungi: data }))
+          .catch(err => console.log(err))
         
         this.setState({ user: data[0], sightings: userSightings, isLoggedIn: true })
       })
