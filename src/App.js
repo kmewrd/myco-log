@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import LoginForm from './components/LoginForm/LoginForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import ExplorePage from './components/ExplorePage/ExplorePage';
+import DetailPage from './components/DetailPage/DetailPage';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
@@ -58,6 +59,9 @@ class App extends Component {
             <Route exact path='/explore'>
               {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
             </Route>
+            <Route exact path='/explore/:id' render={() => {
+              {this.state.isLoggedIn ? <DetailPage /> : <Redirect to='/' />}
+            }} />
           </Switch>
         </main>
       </div>
