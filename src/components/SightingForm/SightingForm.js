@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { postSighting } from '../../apiCalls';
 import './SightingForm.css';
 
 const SightingForm = ({ user, id }) => {
@@ -20,19 +21,26 @@ const SightingForm = ({ user, id }) => {
     e.preventDefault();
 
     if (date && location && notes) {
-      let sighting = {
-        id: Date.now(),
-        fungusId: parseInt(id),
-        userId: user.id,
-        date: date,
-        location: location,
-        notes: notes
-      }
-      // POST request goes here
-      console.log(sighting);
-      clearForm();
+      let sighting = createSighting();
+
+      postSighting(sighting)
+        .then(() => {
+          clearForm();
+        })
+        .catch(err => setError('Something went wrong. Please try again later.'))
     } else {
       setError('Please complete all required fields.' );
+    }
+  }
+
+  const createSighting = () => {
+    return {
+      id: Date.now(),
+      fungusId: parseInt(id),
+      userId: user.id,
+      date: date,
+      location: location,
+      notes: notes
     }
   }
 
