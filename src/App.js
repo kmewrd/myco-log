@@ -3,7 +3,7 @@ import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -47,8 +47,15 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
-          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
-          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} />}
+          {/* <PageControl isLoggedIn={this.state.isLoggedIn} currentPage={this.state.currentPage} /> */}
+          <Switch>
+            <Route exact path='/'>
+              {this.state.isLoggedIn ? <Redirect to='/dashboard' /> : <LoginForm completeLogin={this.completeLogin} />}
+            </Route>
+            <Route exact path='/dashboard'>
+              {!this.state.isLoggedIn ? <Redirect to='/' /> : <Dashboard user={this.state.user} sightings={this.state.sightings} />}
+            </Route>
+          </Switch>
         </main>
       </div>
     );
