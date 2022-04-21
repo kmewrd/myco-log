@@ -1,56 +1,54 @@
-import { Component } from 'react';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './SightingForm.css';
 
-class SightingForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      date: '',
-      location: '',
-      notes: '',
-      error: null
-    }
+const SightingForm = ({ user, id }) => {
+  const [date, setDate] = useState('');
+  const [location, setLocation] = useState('');
+  const [notes, setNotes] = useState('');
+  const [error, setError] = useState(null);
+  const history = useHistory();
+
+  const clearForm = () => {
+    setDate('');
+    setLocation('');
+    setNotes('');
+    setError(null);
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  submitSighting = e => {
+  const submitSighting = e => {
     e.preventDefault();
 
-    if (this.state.date && this.state.location && this.state.notes) {
+    if (date && location && notes) {
       let sighting = {
         id: Date.now(),
-        fungusId: parseInt(this.props.id),
-        userId: this.props.user.id,
-        date: this.state.date,
-        location: this.state.location,
-        notes: this.state.notes
+        fungusId: parseInt(id),
+        userId: user.id,
+        date: date,
+        location: location,
+        notes: notes
       }
       // POST request goes here
       console.log(sighting);
+      clearForm();
     } else {
-      this.setState({ error: 'Please complete all required fields.' })
+      setError('Please complete all required fields.' );
     }
   }
 
-  clearForm = () => {
-    this.setState({ date: '', location: '', notes: '', error: '' });
-  }
-
-  render() {
-    return (
+  return (
       <form>
-        <button>Close</button>
-        <input type='text' name='date' value={this.state.date} onChange={e => this.handleChange(e)} />
-        <input type='text' name='location' value={this.state.location} onChange={e => this.handleChange(e)} />
-        <input type='text' name='notes' value={this.state.notes} onChange={e => this.handleChange(e)} />
-        {this.state.error && <p>{this.state.error}</p>}
-        <button onClick={e => this.submitSighting(e)}>SUBMIT</button>
+        <button onClick={(e) => {
+          e.preventDefault();
+          history.goBack()
+        }}>Close</button>
+        <input type='text' name='date' value={date} onChange={e => setDate(e.target.value)} />
+        <input type='text' name='location' value={location} onChange={e => setLocation(e.target.value)} />
+        <input type='text' name='notes' value={notes} onChange={e => setNotes(e.target.value)} />
+        {error && <p>{error}</p>}
+        <button onClick={e => submitSighting(e)}>SUBMIT</button>
       </form>
     )
-  }
 }
 
 export default SightingForm;
