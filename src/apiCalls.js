@@ -21,5 +21,5 @@ export const postSighting = sighting => {
 }
 
 export const deleteSighting = id => {
-  return fetch(`http://localhost:3001/api/v1/sightings/${id}`, { method: 'DELETE' }).then(response => response.json())
+  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/sightings/${id}`, { method: 'DELETE' }).then(response => response.json())
 }
