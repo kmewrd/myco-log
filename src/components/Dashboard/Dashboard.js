@@ -31,7 +31,7 @@ const Dashboard = ({ user, sightings }) => {
         <NavBar />
         <h2>Dashboard</h2>
         <div>
-          <h3>Region: {user.region}</h3>
+          {/* <h3>Region: {user.region}</h3> */}
           <h3>Total sightings: {sightings.length}</h3>
           <h3>Sightings this month: {sightingsThisMonth.length}</h3>
         </div>

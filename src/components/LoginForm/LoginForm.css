@@ -1,0 +1,12 @@
+.background-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.login-form {
+  background-color: #C4C9AF;
+  /* max-width: 400px; */
+}
