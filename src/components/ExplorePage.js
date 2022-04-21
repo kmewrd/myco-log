@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
+import SearchBar from './SearchBar';
 
 const ExplorePage = ({ regionalFungi }) => {
   const fungi = regionalFungi.map(fungus => {
@@ -18,7 +19,11 @@ const ExplorePage = ({ regionalFungi }) => {
 
   return (
     <section>
-      {fungi}
+      <h2>Fungus Finder</h2>
+      <SearchBar />
+      <div>
+        {fungi}
+      </div>
     </section>
   )
 }
