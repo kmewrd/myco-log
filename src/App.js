@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import Dashboard from './components/Dashboard/Dashboard';
 import ExplorePage from './components/ExplorePage/ExplorePage';
 import DetailPage from './components/DetailPage/DetailPage';
+import SightingForm from './components/SightingForm/SightingForm';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
@@ -59,9 +60,16 @@ class App extends Component {
             <Route exact path='/explore'>
               {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
             </Route>
-            <Route path='/explore/:id' render={({ match }) => {
+            <Route exact path='/explore/:id' render={({ match }) => {
               return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
             }} />
+            <Route path='/explore/:id/record-sighting' render={({ match }) => {
+              return this.state.isLoggedIn ? <SightingForm user={this.state.user} id={match.params.id} /> : <Redirect to='/' />
+            }}>
+            </Route>
+            <Route path='/*'>
+              {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
+            </Route>
           </Switch>
         </main>
       </div>
