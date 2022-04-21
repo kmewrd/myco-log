@@ -1,25 +1,59 @@
-import logo from './logo.svg';
+import { Component } from 'react';
+import Header from './components/Header';
+import LoginForm from './components/LoginForm';
+import Dashboard from './components/Dashboard';
+import { fetchUser, fetchSightings } from './apiCalls';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoggedIn: false,
+      user: null,
+      sightings: [],
+      error: null
+    }
+  }
+
+  completeLogin = username => {
+    this.getUser(username);
+  }
+
+  logout = e => {
+    e.preventDefault();
+    this.setState({ isLoggedIn: false, user: null, sightings: [] });
+  }
+
+  getUser = username => {
+    fetchUser(username)
+      .then(data => {
+        this.setState({ user: data })
+        this.getUserSightings(data);
+      })
+      .catch(err => console.log(err))
+  }
+
+  getUserSightings = user => {
+    fetchSightings()
+      .then(data => {
+        const userSightings = data.filter(sighting => sighting.userId === user.id);
+        this.setState({ sightings: userSightings, isLoggedIn: true })
+      })
+      .catch(err => console.log(err))
+  }
+
+  render() {
+    return (
+      <div>
+        <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+        <main>
+          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
+          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} />}
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
