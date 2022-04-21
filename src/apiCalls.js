@@ -12,6 +12,10 @@ export const fetchRegionalFungi = region => {
   return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungi/${region}`).then(response => response.json())
 }
 
+export const fetchFungus = id => {
+  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/${id}`).then(response => response.json())
+}
+
 export const postSighting = sighting => {
   return fetch('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/sightings', {
     method: 'POST',

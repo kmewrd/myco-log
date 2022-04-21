@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Sighting from './Sighting';
+import Sighting from '../Sighting/Sighting';
+import NavBar from '../NavBar/NavBar';
+import './Dashboard.css';
 
 const Dashboard = ({ user, sightings }) => {
   const [sightingsThisMonth, setSightingsThisMonth] = useState([]);
@@ -26,6 +28,7 @@ const Dashboard = ({ user, sightings }) => {
   return (
     <div>
       <section>
+        <NavBar />
         <h2>Dashboard</h2>
         <div>
           <h3>Region: {user.region}</h3>

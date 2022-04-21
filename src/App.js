@@ -1,8 +1,11 @@
 import { Component } from 'react';
-import Header from './components/Header';
-import LoginForm from './components/LoginForm';
-import Dashboard from './components/Dashboard';
-import { fetchUser, fetchSightings } from './apiCalls';
+import Header from './components/Header/Header';
+import LoginForm from './components/LoginForm/LoginForm';
+import Dashboard from './components/Dashboard/Dashboard';
+import ExplorePage from './components/ExplorePage/ExplorePage';
+import DetailPage from './components/DetailPage/DetailPage';
+import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -12,33 +15,31 @@ class App extends Component {
       isLoggedIn: false,
       user: null,
       sightings: [],
+      regionalFungi: [],
       error: null
     }
   }
 
   completeLogin = username => {
-    this.getUser(username);
+    this.initializeData(username);
   }
 
   logout = e => {
     e.preventDefault();
-    this.setState({ isLoggedIn: false, user: null, sightings: [] });
+    this.setState({ isLoggedIn: false, user: null, sightings: [], regionalFungi: [] });
   }
 
-  getUser = username => {
-    fetchUser(username)
+  initializeData = username => {
+    Promise.all([fetchUser(username), fetchSightings()])
       .then(data => {
-        this.setState({ user: data })
-        this.getUserSightings(data);
-      })
-      .catch(err => console.log(err))
-  }
+        const userId = username.split('mycophile').join('');
+        const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
 
-  getUserSightings = user => {
-    fetchSightings()
-      .then(data => {
-        const userSightings = data.filter(sighting => sighting.userId === user.id);
-        this.setState({ sightings: userSightings, isLoggedIn: true })
+        fetchRegionalFungi(data[0].region)
+          .then(data => this.setState({ regionalFungi: data }))
+          .catch(err => console.log(err))
+        
+        this.setState({ user: data[0], sightings: userSightings, isLoggedIn: true })
       })
       .catch(err => console.log(err))
   }
@@ -48,8 +49,20 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
-          {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />}
-          {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} />}
+          <Switch>
+            <Route exact path='/'>
+              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
+            </Route>
+            <Route exact path='/dashboard'>
+              {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
+            </Route>
+            <Route exact path='/explore'>
+              {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
+            </Route>
+            <Route path='/explore/:id' render={({ match }) => {
+              return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
+            }} />
+          </Switch>
         </main>
       </div>
     );
