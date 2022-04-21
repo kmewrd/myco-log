@@ -47,16 +47,14 @@ class App extends Component {
       <div>
         <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
         <main>
-          {/* <Switch> */}
-            <Route exact path='/'>
-              {/* {!this.state.isLoggedIn && <LoginForm completeLogin={this.completeLogin} />} */}
-              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
-            </Route>
-            <Route path='/dashboard'>
-              {/* {this.state.isLoggedIn && <Dashboard user={this.state.user} sightings={this.state.sightings} />} */}
+          <Switch>
+            <Route exact path='/dashboard'>
               {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
             </Route>
-          {/* </Switch> */}
+            <Route exact path='/'>
+              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
+            </Route>
+          </Switch>
         </main>
       </div>
     );
