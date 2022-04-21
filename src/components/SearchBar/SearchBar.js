@@ -15,8 +15,8 @@ class SearchBar extends Component {
   render() {
     return (
       <form>
-        <input type='text' placeholder='Search...' value={this.state.searchField} onChange={e => handleChange(e)} />
-        <button onClick={/*() => this.props.search(this.state.searchField)*/}>GO</button>
+        <input type='text' placeholder='Search...' value={this.state.searchField} onChange={e => this.handleChange(e)} />
+        <button>GO</button>
       </form>
     )
   }

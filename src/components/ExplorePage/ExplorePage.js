@@ -1,6 +1,7 @@
 import React from 'react';
 import ListItem from '../ListItem/ListItem';
 import SearchBar from '../SearchBar/SearchBar';
+import NavBar from '../NavBar/NavBar';
 import './ExplorePage.css';
 
 const ExplorePage = ({ regionalFungi }) => {
@@ -24,8 +25,9 @@ const ExplorePage = ({ regionalFungi }) => {
 
   return (
     <section>
+      <NavBar />
       <h2>Fungus Finder</h2>
-      <SearchBar search={search}/>
+      <SearchBar />
       <div>
         {fungi}
       </div>
