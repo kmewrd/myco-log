@@ -15,6 +15,14 @@ class SightingForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  // submitSighting = () => {
+
+  // }
+
+  clearForm = () => {
+    this.setState({ date: '', location: '', notes: '' });
+  }
+
   render() {
     return (
       <form>
