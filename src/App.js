@@ -35,13 +35,15 @@ class App extends Component {
       .then(data => {
         const userId = username.split('mycophile').join('');
         const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
-
-        fetchRegionalFungi(data[0].region)
-          .then(data => this.setState({ regionalFungi: data }))
-          .catch(err => console.log(err))
         
         this.setState({ user: data[0], sightings: userSightings, isLoggedIn: true })
       })
+      .catch(err => console.log(err))
+  }
+
+  getFungi = region => {
+    fetchRegionalFungi(region)
+      .then(data => this.setState({ regionalFungi: data }))
       .catch(err => console.log(err))
   }
 
@@ -58,7 +60,7 @@ class App extends Component {
               {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
             </Route>
             <Route exact path='/explore'>
-              {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi}/> : <Redirect to='/' />}
+              {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi} getFungi={this.getFungi} region={this.state.user.region}/> : <Redirect to='/' />}
             </Route>
             <Route exact path='/explore/:id' render={({ match }) => {
               return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />

@@ -1,10 +1,10 @@
-import React from 'react';
+import { useEffect } from 'react';
 import ListItem from '../ListItem/ListItem';
 import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
 import './ExplorePage.css';
 
-const ExplorePage = ({ regionalFungi }) => {
+const ExplorePage = ({ regionalFungi, getFungi, region }) => {
   const fungi = regionalFungi.map(fungus => {
     return (
       <ListItem
@@ -18,6 +18,10 @@ const ExplorePage = ({ regionalFungi }) => {
         imageUrl={fungus.imageUrl} />
     )
   })
+
+  useEffect(() => {
+    getFungi(region);
+  }, [])
 
   // const search = searchTerms => {
     
