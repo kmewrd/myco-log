@@ -24,7 +24,7 @@ const DetailPage = ({ id }) =>{
   
   return (
     <section>
-      <img src={fungus.imageUrl} />
+      <img src={fungus.imageUrl} alt='' />
       <Link to='/explore'>
         <button>Back</button>
       </Link>
