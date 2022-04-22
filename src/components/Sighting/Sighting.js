@@ -31,7 +31,7 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
       <h4>Date: {formattedDate}</h4>
       <h4>Location: {location}</h4>
       <p>Notes: {notes}</p>
-      {error & <p>{error}</p>}
+      {error && <p>{error}</p>}
       <button onClick={() => deleteRecord(id)}>DELETE</button>
     </div>
   )
