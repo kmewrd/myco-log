@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { postSighting } from '../../apiCalls';
 import './SightingForm.css';
 
-const SightingForm = ({ user, id }) => {
+const SightingForm = ({ userId, fungusId }) => {
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [notes, setNotes] = useState('');
@@ -36,8 +36,8 @@ const SightingForm = ({ user, id }) => {
   const createSighting = () => {
     return {
       id: Date.now(),
-      fungusId: parseInt(id),
-      userId: user.id,
+      fungusId: parseInt(fungusId),
+      userId: userId,
       date: date,
       location: location,
       notes: notes

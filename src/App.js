@@ -66,7 +66,7 @@ class App extends Component {
               return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
             }} />
             <Route path='/explore/:id/record-sighting' render={({ match }) => {
-              return this.state.isLoggedIn ? <SightingForm user={this.state.user} id={match.params.id} /> : <Redirect to='/' />
+              return this.state.isLoggedIn ? <SightingForm userId={this.state.user.id} fungusId={match.params.id} /> : <Redirect to='/' />
             }}>
             </Route>
             <Route path='/*'>
