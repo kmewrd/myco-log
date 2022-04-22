@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
+import { getSightingsThisMonth } from '../../utils';
 import './Dashboard.css';
 
 const Dashboard = ({ user, sightings }) => {
-  const [sightingsThisMonth, setSightingsThisMonth] = useState([]);
+  const sightingsThisMonth = getSightingsThisMonth(sightings);
   
-  const userSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
-
-  useEffect(() => {
-    getSightingsThisMonth();
-  }, [])
-
-  const getSightingsThisMonth = () => {
-    let month = new Date();
-    month = month.getMonth();
-  
-    let monthlySightings = sightings.filter(sighting => {
-      let date = new Date(sighting.date);
-      let sightingMonth = date.getMonth();
-      return sightingMonth === month;
-    });
-  
-    setSightingsThisMonth(monthlySightings);
-  }
+  const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
 
   return (
     <div>
@@ -38,7 +22,7 @@ const Dashboard = ({ user, sightings }) => {
       </section>
       <section>
         <h2>My Sightings</h2>
-        {userSightings}
+        {allSightings}
       </section>
     </div>
   )

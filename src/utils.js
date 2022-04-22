@@ -19,4 +19,17 @@ const formatRegions = regions => {
   return formattedRegions;
 }
 
-export { formatRegions };
+const getSightingsThisMonth = sightings => {
+  let month = new Date();
+  month = month.getMonth();
+
+  let monthlySightings = sightings.filter(sighting => {
+    let date = new Date(sighting.date);
+    let sightingMonth = date.getMonth();
+    return sightingMonth === month;
+  });
+
+  return monthlySightings;
+}
+
+export { formatRegions, getSightingsThisMonth };
