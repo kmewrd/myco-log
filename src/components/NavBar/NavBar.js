@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <nav>
+    <nav className='main-nav'>
       <NavLink to='/explore' className={isActive => 'nav-link' + (isActive ? 'selected' : '')}>
         Explore
       </NavLink>
