@@ -1,7 +1,7 @@
 import React from 'react';
 import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
-import { getSightingsThisMonth } from '../../utils';
+import { formatRegions, getSightingsThisMonth } from '../../utils';
 import './Dashboard.css';
 
 const Dashboard = ({ user, sightings }) => {
@@ -9,13 +9,15 @@ const Dashboard = ({ user, sightings }) => {
   
   const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
 
+  const region = formatRegions([user.region]);
+
   return (
     <div>
       <section>
         <NavBar />
         <h2>Dashboard</h2>
         <div>
-          <h3>Region: {user.region}</h3>
+          <h3>Region: {region}</h3>
           <h3>Total sightings: {sightings.length}</h3>
           <h3>Sightings this month: {sightingsThisMonth.length}</h3>
         </div>
