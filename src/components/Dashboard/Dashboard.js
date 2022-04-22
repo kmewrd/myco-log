@@ -7,7 +7,7 @@ import './Dashboard.css';
 const Dashboard = ({ user, sightings }) => {
   const sightingsThisMonth = getSightingsThisMonth(sightings);
   
-  const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
+  const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} fungusId={sighting.fungusId} date={sighting.date} location={sighting.location} notes={sighting.notes}/>)
 
   const region = formatRegions([user.region]);
 
