@@ -1,7 +1,9 @@
+const url = 'https://unidentified-fungus-outdoors.herokuapp.com/api/v1';
+
 export const fetchUser = username => {
   const userId = username.split('mycophile').join('');
 
-  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/users/${userId}`).then(response => response.json())
+  return fetch(`${url}/users/${userId}`).then(response => response.json())
 }
 
 export const fetchSightings = () => {
@@ -9,11 +11,11 @@ export const fetchSightings = () => {
 }
 
 export const fetchRegionalFungi = region => {
-  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungi/${region}`).then(response => response.json())
+  return fetch(`${url}/fungi/${region}`).then(response => response.json())
 }
 
 export const fetchFungus = id => {
-  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/${id}`).then(response => response.json())
+  return fetch(`${url}/fungus/${id}`).then(response => response.json())
 }
 
 export const postSighting = sighting => {
@@ -25,5 +27,5 @@ export const postSighting = sighting => {
 }
 
 export const deleteSighting = id => {
-  return fetch(`https://unidentified-fungus-outdoors.herokuapp.com/api/v1/sightings/${id}`, { method: 'DELETE' }).then(response => response.json())
+  return fetch(`${url}/sightings/${id}`, { method: 'DELETE' }).then(response => response.json())
 }
