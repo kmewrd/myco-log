@@ -39,19 +39,20 @@ const App = () => {
         toggleIsLoggedIn(true);
         setError(null);
       })
-      .catch(err => console.log(err))
+      .catch(err => setError('Unable to retrieve user data. Please try again later.'))
   }
 
   const getFungi = region => {
     fetchRegionalFungi(region)
       .then(data => setRegionalFungi(data))
-      .catch(err => console.log(err))
+      .catch(err => setError('Unable to retrieve regional fungi information. Please try again later.'))
   }
 
   return (
     <div>
       <Header isLoggedIn={isLoggedIn} logout={logout} />
       <main>
+        {error && <p>{error}</p>}
         <Switch>
           <Route exact path='/'>
             {!isLoggedIn ? <LoginForm completeLogin={completeLogin} /> : <Redirect to='/dashboard' />}
