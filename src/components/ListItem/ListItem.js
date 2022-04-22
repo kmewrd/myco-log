@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ListItem.css';
 
-const ListItem = ({ id, name, scientificName, regions, description, characteristics, imageUrl }) => {
+const ListItem = ({ id, name, scientificName, imageUrl }) => {
   return (
     <div>
       <img src={imageUrl} alt='' />

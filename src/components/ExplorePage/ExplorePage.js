@@ -12,9 +12,6 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
         id={fungus.id}
         name={fungus.name}
         scientificName={fungus.scientificName}
-        regions={fungus.regions}
-        description={fungus.description}
-        characteristics={fungus.characteristics}
         imageUrl={fungus.imageUrl} />
     )
   })
