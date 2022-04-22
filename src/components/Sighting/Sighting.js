@@ -5,6 +5,7 @@ import './Sightings.css';
 
 const Sighting = ({ id, fungusId, date, location, notes }) => {
   const [fungusName, setFungusName] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getFungus(fungusId);
@@ -18,8 +19,8 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
 
   const deleteRecord = id => {
     deleteSighting(id)
-      .then(() => console.log('success'))
-      .catch(err => console.log(err))
+      .then(() => setError(null))
+      .catch(err => setError('Unable to delete this item. Please try again later.'))
   }
 
   const formattedDate = formatDate(date);
@@ -30,6 +31,7 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
       <h4>Date: {formattedDate}</h4>
       <h4>Location: {location}</h4>
       <p>Notes: {notes}</p>
+      {error & <p>{error}</p>}
       <button onClick={() => deleteRecord(id)}>DELETE</button>
     </div>
   )
