@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ExplorePage from './components/ExplorePage/ExplorePage';
 import DetailPage from './components/DetailPage/DetailPage';
 import SightingForm from './components/SightingForm/SightingForm';
+import NotFound from './components/NotFound/NotFound';
 import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
@@ -71,7 +72,7 @@ const App = () => {
           }}>
           </Route>
           <Route path='/*'>
-            {isLoggedIn ? <Dashboard user={user} sightings={sightings} /> : <Redirect to='/' />}
+            <NotFound />
           </Route>
         </Switch>
       </main>
