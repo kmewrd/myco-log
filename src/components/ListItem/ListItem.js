@@ -5,7 +5,7 @@ import './ListItem.css';
 const ListItem = ({ id, name, scientificName, regions, description, characteristics, imageUrl }) => {
   return (
     <div>
-      <img src={imageUrl} />
+      <img src={imageUrl} alt='' />
       <h3>{name}</h3>
       <h4>{scientificName}</h4>
       <Link to={`/explore/${id}`}>
