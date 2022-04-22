@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchFungus, deleteSighting } from '../../apiCalls';
+import { formatDate } from '../../utils';
 import './Sightings.css';
 
 const Sighting = ({ id, fungusId, date, location, notes }) => {
@@ -15,14 +16,13 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
       .catch(err => setFungusName('Unavailable'))
   }
 
-  let formattedDate = new Date(date);
-  formattedDate = formattedDate.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
   const deleteRecord = id => {
     deleteSighting(id)
       .then(() => console.log('success'))
       .catch(err => console.log(err))
   }
+
+  const formattedDate = formatDate(date);
 
   return (
     <div>

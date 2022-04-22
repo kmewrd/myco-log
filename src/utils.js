@@ -6,17 +6,28 @@ const formatRegions = regions => {
         let split = half.split('');
         let capital = split[0].toUpperCase();
         split.splice(0, 1, capital);
+
         return split.join('');
       })
+
       return formatted.join(' ');
     } else {
       let split = region.split('');
       let capital = split[0].toUpperCase();
       split.splice(0, 1, capital);
+
       return split.join('');
     }
   })
+
   return formattedRegions;
+}
+
+const formatDate = date => {
+  let formattedDate = new Date(date);
+  formattedDate = formattedDate.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return formattedDate;
 }
 
 const getSightingsThisMonth = sightings => {
@@ -26,10 +37,11 @@ const getSightingsThisMonth = sightings => {
   let monthlySightings = sightings.filter(sighting => {
     let date = new Date(sighting.date);
     let sightingMonth = date.getMonth();
+
     return sightingMonth === month;
   });
 
   return monthlySightings;
 }
 
-export { formatRegions, getSightingsThisMonth };
+export { formatRegions, formatDate, getSightingsThisMonth };
