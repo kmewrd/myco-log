@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchFungus } from '../../apiCalls';
+import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
 import './DetailPage.css';
 
@@ -17,7 +18,8 @@ const DetailPage = ({ id }) =>{
   let regions;
 
   if (fungus.regions) {
-    regions = fungus.regions.map(region => <div key={region}>{region}</div>)
+    regions = formatRegions(fungus.regions);
+    regions = regions.map(region => <div key={region}>{region}</div>)
   }
   
   return (
