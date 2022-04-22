@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import Header from './components/Header/Header';
 import LoginForm from './components/LoginForm/LoginForm';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -9,74 +9,73 @@ import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoggedIn: false,
-      user: null,
-      sightings: [],
-      regionalFungi: [],
-      error: null
-    }
+const App = () => {
+  const [isLoggedIn, toggleIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [sightings, setSightings] = useState([]);
+  const [regionalFungi, setRegionalFungi] = useState([]);
+  const [error, setError] = useState(null);
+
+  const completeLogin = username => {
+    initializeData(username);
   }
 
-  completeLogin = username => {
-    this.initializeData(username);
-  }
-
-  logout = e => {
+  const logout = e => {
     e.preventDefault();
-    this.setState({ isLoggedIn: false, user: null, sightings: [], regionalFungi: [] });
+    toggleIsLoggedIn(false);
+    setUser(null);
+    setSightings([]);
+    setRegionalFungi([]);
   }
 
-  initializeData = username => {
+  const initializeData = username => {
     Promise.all([fetchUser(username), fetchSightings()])
       .then(data => {
         const userId = username.split('mycophile').join('');
         const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
         
-        this.setState({ user: data[0], sightings: userSightings, isLoggedIn: true })
+        setUser(data[0]);
+        setSightings(userSightings);
+        toggleIsLoggedIn(true);
+        setError(null);
       })
       .catch(err => console.log(err))
   }
 
-  getFungi = region => {
+  const getFungi = region => {
     fetchRegionalFungi(region)
-      .then(data => this.setState({ regionalFungi: data }))
+      .then(data => setRegionalFungi(data))
       .catch(err => console.log(err))
   }
 
-  render() {
-    return (
-      <div>
-        <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-        <main>
-          <Switch>
-            <Route exact path='/'>
-              {!this.state.isLoggedIn ? <LoginForm completeLogin={this.completeLogin} /> : <Redirect to='/dashboard' />}
-            </Route>
-            <Route exact path='/dashboard'>
-              {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
-            </Route>
-            <Route exact path='/explore'>
-              {this.state.isLoggedIn ? <ExplorePage regionalFungi={this.state.regionalFungi} getFungi={this.getFungi} region={this.state.user.region}/> : <Redirect to='/' />}
-            </Route>
-            <Route exact path='/explore/:id' render={({ match }) => {
-              return this.state.isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
-            }} />
-            <Route path='/explore/:id/record-sighting' render={({ match }) => {
-              return this.state.isLoggedIn ? <SightingForm userId={this.state.user.id} fungusId={match.params.id} /> : <Redirect to='/' />
-            }}>
-            </Route>
-            <Route path='/*'>
-              {this.state.isLoggedIn ? <Dashboard user={this.state.user} sightings={this.state.sightings} /> : <Redirect to='/' />}
-            </Route>
-          </Switch>
-        </main>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Header isLoggedIn={isLoggedIn} logout={logout} />
+      <main>
+        <Switch>
+          <Route exact path='/'>
+            {!isLoggedIn ? <LoginForm completeLogin={completeLogin} /> : <Redirect to='/dashboard' />}
+          </Route>
+          <Route exact path='/dashboard'>
+            {isLoggedIn ? <Dashboard user={user} sightings={sightings} /> : <Redirect to='/' />}
+          </Route>
+          <Route exact path='/explore'>
+            {isLoggedIn ? <ExplorePage regionalFungi={regionalFungi} getFungi={getFungi} region={user.region}/> : <Redirect to='/' />}
+          </Route>
+          <Route exact path='/explore/:id' render={({ match }) => {
+            return isLoggedIn ? <DetailPage id={match.params.id} /> : <Redirect to='/' />
+          }} />
+          <Route path='/explore/:id/record-sighting' render={({ match }) => {
+            return isLoggedIn ? <SightingForm userId={user.id} fungusId={match.params.id} /> : <Redirect to='/' />
+          }}>
+          </Route>
+          <Route path='/*'>
+            {isLoggedIn ? <Dashboard user={user} sightings={sightings} /> : <Redirect to='/' />}
+          </Route>
+        </Switch>
+      </main>
+    </div>
+  );
 }
 
 export default App;
