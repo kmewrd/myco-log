@@ -73,7 +73,7 @@ ExplorePage.propTypes = {
     scientificName: PropTypes.string,
     characteristics: PropTypes.arrayOf(PropTypes.string),
     imageUrl: PropTypes.string
-  })),
-  getFungi: PropTypes.func,
-  region: PropTypes.string
+  })).isRequired,
+  getFungi: PropTypes.func.isRequired,
+  region: PropTypes.string.isRequired
 }

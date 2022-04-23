@@ -39,6 +39,6 @@ Dashboard.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     region: PropTypes.string
-  }),
-  sightings: PropTypes.array
+  }).isRequired,
+  sightings: PropTypes.array.isRequired
 }
