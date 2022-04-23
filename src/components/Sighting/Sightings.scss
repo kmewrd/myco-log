@@ -12,9 +12,30 @@
     font-size: 22px;
   }
 
+  h4, p {
+    margin: 10px 0;
+  }
+
+  h4 {
+    margin-right: 0.2em;
+  }
+
   img {
     width: 325px;
     height: 325px;
     object-fit: cover;
   }
+
+  button {
+    margin-top: 1em;
+  }
+
+  .date-line,
+  .location-line {
+    display: flex;
+  }
+}
+
+.pseudo-heading {
+  font-weight: bold;
 }

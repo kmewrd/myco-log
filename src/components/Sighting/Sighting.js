@@ -37,9 +37,17 @@ const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) =>
     <div className='sighting-card'>
       <img src={fungusImage} alt=''/>
       <h3>{fungusName}</h3>
-      <h4>Date: {formattedDate}</h4>
-      <h4>Location: {location}</h4>
-      <p>Notes: {notes ? notes : 'N/A'}</p>
+      <div className='date-line'>
+        <h4>Date:</h4>
+        <p>{formattedDate}</p>
+      </div>
+      <div className='location-line'>
+        <h4>Location:</h4>
+        <p>{location}</p>
+      </div>
+      <div className='notes-container'>
+        <p><span className='pseudo-heading'>Notes:</span> {notes ? notes : 'N/A'}</p>
+      </div>
       {error && <p>{error}</p>}
       <button onClick={() => deleteRecord(id)}>DELETE</button>
     </div>
