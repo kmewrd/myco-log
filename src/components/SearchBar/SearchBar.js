@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import './SearchBar.scss';
 
 const SearchBar = ({ search }) => {
   const [searchField, setSearchField] = useState('');
