@@ -1,9 +1,12 @@
+@import '../../variables';
+
 .list-item {
   width: 375px;
   height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  // border-bottom: 1px solid $dark-gray;
 
   img {
     height: 75px;

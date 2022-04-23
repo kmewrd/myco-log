@@ -45,14 +45,14 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
       <SearchBar search={search}/>
       {filter && !filteredFungi.length && (
         <div>
-          <button onClick={() => setFilter(null)}>Clear Search</button>
           <p>No results found for {filter}</p>
+          <button onClick={() => setFilter(null)}>Clear Search</button>
         </div>
       )}
       {filter && !!filteredFungi.length && (
         <div>
+          <p>Showing results for <span className='search-term'>{filter}</span></p>
           <button onClick={() => setFilter(null)}>Clear Search</button>
-          <p>Showing results for {filter}</p>
         </div>
       )}
       <div className='fungus-list-wrapper'>
