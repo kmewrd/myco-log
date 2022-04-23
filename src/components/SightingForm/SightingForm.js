@@ -46,18 +46,18 @@ const SightingForm = ({ userId, fungusId }) => {
   }
 
   return (
-      <form>
-        <button type='button' onClick={history.goBack}>Close</button>
-        <label htmlFor='date'>Date:</label>
-        <input type='text' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
-        <label htmlFor='location'>Location:</label>
-        <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
-        <label htmlFor='notes'>Notes:</label>
-        <input type='text' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)} />
-        {error && <p>{error}</p>}
-        <button onClick={e => submitSighting(e)}>SUBMIT</button>
-      </form>
-    )
+    <form>
+      <button type='button' onClick={history.goBack}>Close</button>
+      <label htmlFor='date'>Date:</label>
+      <input type='text' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
+      <label htmlFor='location'>Location:</label>
+      <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
+      <label htmlFor='notes'>Notes:</label>
+      <input type='text' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)} />
+      {error && <p>{error}</p>}
+      <button onClick={e => submitSighting(e)}>SUBMIT</button>
+    </form>
+  )
 }
 
 export default SightingForm;
