@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { postSighting } from '../../apiCalls';
 import './SightingForm.css';
@@ -57,3 +58,8 @@ const SightingForm = ({ userId, fungusId }) => {
 }
 
 export default SightingForm;
+
+SightingForm.propTypes = {
+  userId: PropTypes.number.isRequired,
+  fungusId: PropTypes.number.isRequired
+}
