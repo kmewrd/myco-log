@@ -3,6 +3,10 @@
 @import '../../variables';
 
 .dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   h2 {
     font-family: 'Advent Pro', sans-serif;
   }
@@ -12,17 +16,40 @@
   }
 }
 
-.dashboard-wrapper {
+.dashboard {
+  @media screen and (min-width: 900px) {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+.dashboard-stats-container,
+.my-sightings {
+  @media screen and (min-width: 900px) {
+    margin: 0 2em;
+  }
+}
+
+.dashboard-stats-container,
+.my-sightings,
+.sightings-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.dashboard,
 .my-sightings {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @media screen and (min-width: 1200px) {
+    min-width: 800px;
+  }
+}
+
+.sightings-container {
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .dashboard-stats {
