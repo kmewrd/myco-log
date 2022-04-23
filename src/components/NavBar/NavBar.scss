@@ -16,5 +16,9 @@ nav {
     &.selected {
       border-bottom: 1.5px solid $dark-gray;
     }
+
+    &:hover {
+      font-style: italic;
+    }
   }
 }
