@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import './LoginForm.css';
+import './LoginForm.scss';
 
 const LoginForm = ({ completeLogin }) => {
   const [username, setUsername] = useState('');

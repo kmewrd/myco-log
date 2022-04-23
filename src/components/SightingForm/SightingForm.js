@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { postSighting } from '../../apiCalls';
-import './SightingForm.css';
+import './SightingForm.scss';
 
 const SightingForm = ({ userId, fungusId }) => {
   const [date, setDate] = useState('');

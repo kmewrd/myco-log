@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { fetchFungus } from '../../apiCalls';
 import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
-import './DetailPage.css';
+import './DetailPage.scss';
 
 const DetailPage = ({ id }) =>{
   const [fungus, setFungus] = useState({});

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ListItem from '../ListItem/ListItem';
 import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
-import './ExplorePage.css';
+import './ExplorePage.scss';
 
 const ExplorePage = ({ regionalFungi, getFungi, region }) => {
   const [filter, setFilter] = useState(null);

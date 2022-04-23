@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { fetchFungus, deleteSighting } from '../../apiCalls';
 import { formatDate } from '../../utils';
-import './Sightings.css';
+import './Sightings.scss';
 
 const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) => {
   const [fungusName, setFungusName] = useState('');

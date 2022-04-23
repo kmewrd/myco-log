@@ -8,7 +8,7 @@ import SightingForm from './components/SightingForm/SightingForm';
 import NotFound from './components/NotFound/NotFound';
 import { fetchUser, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 const App = () => {
   const [isLoggedIn, toggleIsLoggedIn] = useState(false);

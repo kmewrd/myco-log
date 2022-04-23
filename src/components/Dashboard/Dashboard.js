@@ -4,7 +4,7 @@ import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
 import { fetchSightings } from '../../apiCalls';
 import { formatRegions, getSightingsThisMonth } from '../../utils';
-import './Dashboard.css';
+import './Dashboard.scss';
 
 const Dashboard = ({ user, sightings, getSightings }) => {
   useEffect(() => {
