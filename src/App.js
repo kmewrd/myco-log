@@ -18,7 +18,7 @@ const App = () => {
   const [error, setError] = useState(null);
 
   const completeLogin = username => {
-    initializeData(username);
+    initializeUser(username);
   }
 
   const logout = e => {
@@ -29,18 +29,18 @@ const App = () => {
     setRegionalFungi([]);
   }
 
-  const initializeData = username => {
-    Promise.all([fetchUser(username), fetchSightings()])
+  const initializeUser = username => {
+    fetchUser(username)
       .then(data => {
-        const userId = username.split('mycophile').join('');
-        const userSightings = data[1].filter(sighting => sighting.userId.toString() === userId);
-        
-        setUser(data[0]);
-        setSightings(userSightings);
+        setUser(data);
         toggleIsLoggedIn(true);
         setError(null);
       })
       .catch(err => setError('Unable to retrieve user data. Please try again later.'))
+  }
+
+  const getSightings = sightings => {
+    setSightings(sightings);
   }
 
   const getFungi = region => {
@@ -59,7 +59,7 @@ const App = () => {
             {!isLoggedIn ? <LoginForm completeLogin={completeLogin} /> : <Redirect to='/dashboard' />}
           </Route>
           <Route exact path='/dashboard'>
-            {isLoggedIn ? <Dashboard user={user} sightings={sightings} /> : <Redirect to='/' />}
+            {isLoggedIn ? <Dashboard user={user} sightings={sightings} getSightings={getSightings} /> : <Redirect to='/' />}
           </Route>
           <Route exact path='/explore'>
             {isLoggedIn ? <ExplorePage regionalFungi={regionalFungi} getFungi={getFungi} region={user.region}/> : <Redirect to='/' />}
