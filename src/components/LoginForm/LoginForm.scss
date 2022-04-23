@@ -13,8 +13,10 @@
 .login-form {
   background-color: $sage-green;
   position: absolute;
-  left: 32px;
-  right: 32px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   width: 350px;
   height: 436px;
   top: 230px;
