@@ -51,4 +51,28 @@ describe('Homepage and login form', () => {
       .get('form')
       .should('contain', 'Invalid username or password. Please try again.')
   })
+
+  it('should display the dashboard after a successful login', () => {
+    cy.visit('http://localhost:3000')
+      .get('input:first')
+      .type('mycophile5044')
+      .get('input:last')
+      .type('fungi')
+      .get('button')
+      .click()
+      .get('main')
+      .should('contain', 'Dashboard')
+      .and('not.contain', 'form')
+  })
+
+  it('should update the url after successful login', () => {
+    cy.visit('http://localhost:3000')
+      .get('input:first')
+      .type('mycophile5044')
+      .get('input:last')
+      .type('fungi')
+      .get('button')
+      .click()
+      .url('eq', 'http://localhost:3000/dashboard')
+  })
 })
