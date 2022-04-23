@@ -6,7 +6,7 @@ const SearchBar = ({ search }) => {
   const [searchField, setSearchField] = useState('');
 
   return (
-    <form>
+    <form className='search-bar'>
       <input type='text' placeholder='Search...' value={searchField} onChange={e => setSearchField(e.target.value)} />
       <button className='search-button' type='button' onClick={() => {
         search(searchField)
