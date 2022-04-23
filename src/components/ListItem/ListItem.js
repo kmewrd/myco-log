@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi'
 import './ListItem.scss';
 
 const ListItem = ({ id, name, scientificName, imageUrl }) => {
@@ -12,7 +13,7 @@ const ListItem = ({ id, name, scientificName, imageUrl }) => {
         <h4>{scientificName}</h4>
       </div>
       <Link to={`/explore/${id}`}>
-        <button>View</button>
+        <FiArrowRight color='F77F4F' size='2em' />
       </Link>
     </div>
   )
