@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './LoginForm.css';
 
 const LoginForm = ({ completeLogin }) => {
@@ -41,3 +42,7 @@ const LoginForm = ({ completeLogin }) => {
 }
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  completeLogin: PropTypes.func.isRequired
+}
