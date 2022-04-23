@@ -37,7 +37,9 @@ const DetailPage = ({ id }) =>{
       </div>
       <div className='fungus-details'>
         <p>{fungus.description}</p>
-        {regions}
+        <div className='regions-wrapper'>
+          {regions}
+        </div>
         <Link to={`/explore/${id}/record-sighting`}>
           <button className='record-sighting-button'>RECORD SIGHTING</button>
         </Link>

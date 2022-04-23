@@ -34,11 +34,11 @@
 
   .fungus-details {
     background-color: $cream;
-    font-family: 'Aleo', sans-serif;
     padding: 25px;
 
     p {
       margin: 0;
+      font-family: 'Aleo', sans-serif;
     }
   }
 
@@ -50,4 +50,16 @@
     width: 278px;
   }
 
+  .region {
+    box-sizing: border-box;
+    height: 40px;
+    width: 180px;
+    border: 3px solid $olive-green;
+    color: $olive-green;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
