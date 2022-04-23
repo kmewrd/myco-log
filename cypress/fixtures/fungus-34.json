@@ -1,0 +1,21 @@
+{
+  "id": 34,
+  "name": "Cinnabar Red Polypore",
+  "regions": [
+    "southwest",
+    "rocky-mountains",
+    "pacific",
+    "southeast",
+    "northeast",
+    "midwest"
+  ],
+  "description": "Pycnoporus cinnabarinus, also known as the cinnabar polypore, is a saprophytic, white-rot decomposer. Its fruit body is a bright orange shelf fungus. It is common in many areas and is widely distributed throughout the world. It is inedible and it produces cinnabarinic acid to protect itself from bacteria.",
+  "scientificName": "Pycnoporus cinnabarinus",
+  "characteristics": [
+    "orange",
+    "red",
+    "shelf",
+    "stemless"
+  ],
+  "imageUrl": "https://ultimate-mushroom.com/uploads/posts/2020-11/1605893606_pycnoporus-cinnabarinus-4.jpg"
+}
