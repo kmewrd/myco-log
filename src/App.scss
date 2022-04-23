@@ -16,6 +16,13 @@ button {
   font-size: 20px;
   border: 0;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    border: 3px solid $dark-gray;
+    background-color: rgba(0, 0, 0, 0);
+    color: $dark-gray;
+  }
 }
 
 h1,
