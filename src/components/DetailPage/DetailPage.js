@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { fetchFungus } from '../../apiCalls';
 import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import './DetailPage.scss';
 
 const DetailPage = ({ id }) =>{
@@ -28,7 +29,7 @@ const DetailPage = ({ id }) =>{
       <img src={fungus.imageUrl} alt='' />
       <div className='fungus-header'>
         <Link to='/explore'>
-          <button className='back-button'>Back</button>
+          <FiArrowLeft color='F77F4F' size='2em' />
         </Link>
         <div className='fungus-names'>
           <h2>{fungus.name}</h2>

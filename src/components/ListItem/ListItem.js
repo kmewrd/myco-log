@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FiArrowRight } from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi';
 import './ListItem.scss';
 
 const ListItem = ({ id, name, scientificName, imageUrl }) => {
