@@ -31,4 +31,24 @@ describe('Homepage and login form', () => {
       .type('fungi')
       .should('have.value', 'fungi')
   })
+
+  it('should show an error message on button click if one or more fields is empty', () => {
+    cy.visit('http://localhost:3000')
+      .get('form button')
+      .click()
+      .get('form')
+      .should('contain', 'Please fill in both fields.')
+  })
+
+  it('should show a different error message on button click if fields are filled but login details are incorrect', () => {
+    cy.visit('http://localhost:3000')
+      .get('input:first')
+      .type('mycophile504')
+      .get('input:last')
+      .type('fungi')
+      .get('button')
+      .click()
+      .get('form')
+      .should('contain', 'Invalid username or password. Please try again.')
+  })
 })
