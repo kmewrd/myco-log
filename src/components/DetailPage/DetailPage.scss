@@ -39,6 +39,7 @@
     p {
       margin: 0;
       font-family: 'Aleo', sans-serif;
+      margin-bottom: 1em;
     }
   }
 
@@ -48,6 +49,12 @@
 
   .record-sighting-button {
     width: 278px;
+  }
+
+  .regions-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .region {
@@ -61,5 +68,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5em;
   }
 }
