@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ListItem from '../ListItem/ListItem';
 import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
@@ -62,3 +63,15 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
 }
 
 export default ExplorePage;
+
+ExplorePage.propTypes = {
+  regionalFungi: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    regions: PropTypes.arrayOf(PropTypes.string),
+    description: PropTypes.string,
+    scientificName: PropTypes.string,
+    characteristics: PropTypes.arrayOf(PropTypes.string),
+    imageUrl: PropTypes.string
+  })),
+}
