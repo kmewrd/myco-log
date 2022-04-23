@@ -2,12 +2,21 @@
 
 @import '../../variables';
 
-
 .detail-wrapper {
+  @media screen and (min-width: 650px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   img {
     width: 100%;
     height: 420px;
     object-fit: cover;
+
+    @media screen and (min-width: 650px) {
+      height: 620px;
+    }
   }
 
   .fungus-header {

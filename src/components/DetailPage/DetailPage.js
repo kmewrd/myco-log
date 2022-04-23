@@ -26,24 +26,26 @@ const DetailPage = ({ id }) =>{
   
   return (
     <section className='detail-wrapper'>
-      <img src={fungus.imageUrl} alt='' />
-      <div className='fungus-header'>
-        <Link to='/explore'>
-          <FiArrowLeft color='F77F4F' size='2em' />
-        </Link>
-        <div className='fungus-names'>
-          <h2>{fungus.name}</h2>
-          <h3>{fungus.scientificName}</h3>
+      <div className='detail-inner-wrapper'>
+        <img src={fungus.imageUrl} alt='' />
+        <div className='fungus-header'>
+          <Link to='/explore'>
+            <FiArrowLeft color='F77F4F' size='2em' />
+          </Link>
+          <div className='fungus-names'>
+            <h2>{fungus.name}</h2>
+            <h3>{fungus.scientificName}</h3>
+          </div>
         </div>
-      </div>
-      <div className='fungus-details'>
-        <p>{fungus.description}</p>
-        <div className='regions-wrapper'>
-          {regions}
+        <div className='fungus-details'>
+          <p>{fungus.description}</p>
+          <div className='regions-wrapper'>
+            {regions}
+          </div>
+          <Link to={`/explore/${id}/record-sighting`}>
+            <button className='record-sighting-button'>RECORD SIGHTING</button>
+          </Link>
         </div>
-        <Link to={`/explore/${id}/record-sighting`}>
-          <button className='record-sighting-button'>RECORD SIGHTING</button>
-        </Link>
       </div>
     </section>
   )
