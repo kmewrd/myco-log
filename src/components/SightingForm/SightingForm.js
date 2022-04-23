@@ -52,7 +52,7 @@ const SightingForm = ({ userId, fungusId }) => {
         <h2>Record Sighting</h2>
         <div className='sighting-inputs-container'>
           <label htmlFor='date'>Date:</label>
-          <input type='text' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
+          <input type='date' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
           <label htmlFor='location'>Location:</label>
           <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
           <label htmlFor='notes'>Notes:</label>
