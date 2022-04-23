@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;600;700&family=Aleo:ital,wght@0,400;0,700;1,300;1,400&display=swap');
+
+@import '../../variables';
+
+.dashboard-wrapper {
+  h2 {
+    font-family: 'Advent Pro', sans-serif;
+  }
+
+  h3, p {
+    font-family: 'Aleo', sans-serif;
+  }
+}
+
+.dashboard,
+.my-sightings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-stats {
+  background-color: $cream;
+  width: 375px;
+  height: 200px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

@@ -29,17 +29,17 @@ const Dashboard = ({ user, sightings, getSightings }) => {
   const region = formatRegions([user.region]);
 
   return (
-    <div>
-      <section>
+    <div className='dashboard-wrapper'>
+      <section className='dashboard'>
         <NavBar />
         <h2>Dashboard</h2>
-        <div>
+        <div className='dashboard-stats'>
           <h3>Region: {region}</h3>
           <h3>Total sightings: {sightings.length}</h3>
           <h3>Sightings this month: {sightingsThisMonth.length}</h3>
         </div>
       </section>
-      <section>
+      <section className='my-sightings'>
         <h2>My Sightings</h2>
         {allSightings}
       </section>
