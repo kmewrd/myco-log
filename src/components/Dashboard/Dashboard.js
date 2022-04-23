@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
 import { formatRegions, getSightingsThisMonth } from '../../utils';
@@ -31,3 +32,13 @@ const Dashboard = ({ user, sightings }) => {
 }
 
 export default Dashboard;
+
+Dashboard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    region: PropTypes.string
+  }),
+  sightings: PropTypes.array
+}
