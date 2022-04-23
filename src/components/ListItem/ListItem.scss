@@ -8,11 +8,21 @@
   padding: 0 0.5em;
   border-bottom: 1px solid $dark-gray;
 
+  @media screen and (min-width: 650px) {
+    height: 150px;
+    padding: 0 1em;
+  }
+
   img {
     height: 75px;
     width: 75px;
     object-fit: cover;
     border-radius: 50%;
+
+    @media screen and (min-width: 650px) {
+      height: 125px;
+      width: 125px;
+    }
   }
 
   h3,
@@ -20,9 +30,23 @@
     margin: 10px 0;
   }
 
+  h3 {
+    @media screen and (min-width: 480px) {
+      font-size: 24px;
+    }
+
+    @media screen and (min-width: 650px) {
+      font-size: 28px;
+    }
+  }
+
   h4 {
     font-weight: 300;
     font-style: italic;
+
+    @media screen and (min-width: 650px) {
+      font-size: 20px;
+    }
   }
 
   button {
@@ -30,6 +54,6 @@
   }
 
   .list-item-names {
-    width: 200px;
+    width: 55%;
   }
 }
