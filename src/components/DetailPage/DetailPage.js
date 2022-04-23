@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchFungus } from '../../apiCalls';
 import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
@@ -40,3 +41,7 @@ const DetailPage = ({ id }) =>{
 }
 
 export default DetailPage;
+
+DetailPage.propTypes = {
+  id: PropTypes.string.isRequired
+}
