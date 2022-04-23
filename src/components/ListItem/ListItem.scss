@@ -1,12 +1,12 @@
 @import '../../variables';
 
 .list-item {
-  width: 375px;
   height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border-bottom: 1px solid $dark-gray;
+  padding: 0 0.5em;
+  border-bottom: 1px solid $dark-gray;
 
   img {
     height: 75px;
@@ -30,6 +30,6 @@
   }
 
   .list-item-names {
-    width: 220px;
+    width: 200px;
   }
 }
