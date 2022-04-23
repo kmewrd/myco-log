@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './ListItem.css';
 
@@ -16,3 +17,10 @@ const ListItem = ({ id, name, scientificName, imageUrl }) => {
 }
 
 export default ListItem;
+
+ListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  scientificName: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string
+}
