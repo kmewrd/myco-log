@@ -1,9 +1,15 @@
 header {
   background-color: #8E9867;
   color: #fff;
-  padding: 1.25rem 0;
+  padding: 1.25rem 1rem;
+  display: flex;
+  justify-content: space-between;
 
   .logotype {
     margin: 0;
   }
+
+  // @media screen and (min-width: 710px) {
+  //   background-color: #8E9867;
+  // }
 }
