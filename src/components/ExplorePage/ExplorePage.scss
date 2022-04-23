@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+.search-and-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .fungus-list-wrapper {
   background-color: $cream;
   width: 375px;

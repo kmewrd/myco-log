@@ -30,8 +30,8 @@ const Dashboard = ({ user, sightings, getSightings }) => {
 
   return (
     <div className='dashboard-wrapper'>
+      <NavBar />
       <section className='dashboard'>
-        <NavBar />
         <h2>Dashboard</h2>
         <div className='dashboard-stats'>
           <div className='region'>
@@ -47,10 +47,10 @@ const Dashboard = ({ user, sightings, getSightings }) => {
             <p>{sightingsThisMonth.length}</p>
           </div>
         </div>
-      </section>
-      <section className='my-sightings'>
-        <h2>My Sightings</h2>
-        {allSightings}
+        <div className='my-sightings'>
+          <h2>My Sightings</h2>
+          {allSightings}
+        </div>
       </section>
     </div>
   )
