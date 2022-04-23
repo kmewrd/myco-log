@@ -3,6 +3,7 @@
 .sighting-card {
   background-color: $cream;
   width: 90%;
+  min-width: 300px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 2em;
   box-sizing: border-box;
