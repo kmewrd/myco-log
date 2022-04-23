@@ -34,9 +34,18 @@ const Dashboard = ({ user, sightings, getSightings }) => {
         <NavBar />
         <h2>Dashboard</h2>
         <div className='dashboard-stats'>
-          <h3>Region: {region}</h3>
-          <h3>Total sightings: {sightings.length}</h3>
-          <h3>Sightings this month: {sightingsThisMonth.length}</h3>
+          <div className='region'>
+            <h3>Region:</h3>
+            <p>{region}</p>
+          </div>
+          <div className='total-sightings'>
+            <h3>Total sightings:</h3>
+            <p>{sightings.length}</p>
+          </div>
+          <div className='monthly-sightings'>
+            <h3>Sightings this month:</h3>
+            <p>{sightingsThisMonth.length}</p>
+          </div>
         </div>
       </section>
       <section className='my-sightings'>
