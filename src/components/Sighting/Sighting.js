@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchFungus, deleteSighting } from '../../apiCalls';
 import { formatDate } from '../../utils';
 import './Sightings.css';
@@ -38,3 +39,11 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
 }
 
 export default Sighting;
+
+Sighting.propTypes = {
+  id: PropTypes.number.isRequired,
+  fungusId: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  notes: PropTypes.string.isRequired
+}
