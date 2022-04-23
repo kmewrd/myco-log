@@ -5,10 +5,12 @@ import './ListItem.scss';
 
 const ListItem = ({ id, name, scientificName, imageUrl }) => {
   return (
-    <div>
+    <div className='list-item'>
       <img src={imageUrl} alt='' />
-      <h3>{name}</h3>
-      <h4>{scientificName}</h4>
+      <div className='list-item-names'>
+        <h3>{name}</h3>
+        <h4>{scientificName}</h4>
+      </div>
       <Link to={`/explore/${id}`}>
         <button>View</button>
       </Link>

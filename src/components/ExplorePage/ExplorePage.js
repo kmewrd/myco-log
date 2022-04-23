@@ -39,7 +39,7 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
   }
 
   return (
-    <section>
+    <section className='explore-wrapper'>
       <NavBar />
       <h2>Fungus Finder</h2>
       <SearchBar search={search}/>
@@ -55,7 +55,7 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
           <p>Showing results for {filter}</p>
         </div>
       )}
-      <div>
+      <div className='fungus-list-wrapper'>
         {fungi}
       </div>
     </section>
