@@ -74,4 +74,6 @@ ExplorePage.propTypes = {
     characteristics: PropTypes.arrayOf(PropTypes.string),
     imageUrl: PropTypes.string
   })),
+  getFungi: PropTypes.func,
+  region: PropTypes.string
 }
