@@ -6,6 +6,7 @@ import './Sightings.scss';
 
 const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) => {
   const [fungusName, setFungusName] = useState('');
+  const [fungusImage, setFungusImage] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -14,7 +15,10 @@ const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) =>
 
   const getFungus = fungusId => {
     fetchFungus(fungusId)
-      .then(data => setFungusName(data.name))
+      .then(data => {
+        setFungusName(data.name);
+        setFungusImage(data.imageUrl);
+      })
       .catch(err => setFungusName('Unavailable'))
   }
 
@@ -30,7 +34,8 @@ const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) =>
   const formattedDate = formatDate(date);
 
   return (
-    <div>
+    <div className='sighting-card'>
+      <img src={fungusImage} alt=''/>
       <h3>{fungusName}</h3>
       <h4>Date: {formattedDate}</h4>
       <h4>Location: {location}</h4>

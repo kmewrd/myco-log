@@ -1,0 +1,20 @@
+@import '../../variables';
+
+.sighting-card {
+  background-color: $cream;
+  width: 375px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2em;
+  box-sizing: border-box;
+  padding: 25px;
+
+  h3 {
+    font-size: 22px;
+  }
+
+  img {
+    width: 325px;
+    height: 325px;
+    object-fit: cover;
+  }
+}
