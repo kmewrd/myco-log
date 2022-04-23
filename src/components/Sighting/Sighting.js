@@ -4,7 +4,7 @@ import { fetchFungus, deleteSighting } from '../../apiCalls';
 import { formatDate } from '../../utils';
 import './Sightings.css';
 
-const Sighting = ({ id, fungusId, date, location, notes }) => {
+const Sighting = ({ id, fungusId, date, location, notes, retrieveSightings }) => {
   const [fungusName, setFungusName] = useState('');
   const [error, setError] = useState(null);
 
@@ -20,7 +20,10 @@ const Sighting = ({ id, fungusId, date, location, notes }) => {
 
   const deleteRecord = id => {
     deleteSighting(id)
-      .then(() => setError(null))
+      .then(() => {
+        setError(null);
+        retrieveSightings();
+      })
       .catch(err => setError('Unable to delete this item. Please try again later.'))
   }
 
@@ -45,5 +48,6 @@ Sighting.propTypes = {
   fungusId: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  notes: PropTypes.string.isRequired
+  notes: PropTypes.string.isRequired,
+  retrieveSightings: PropTypes.func.isRequired
 }

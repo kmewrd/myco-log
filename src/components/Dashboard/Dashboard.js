@@ -24,7 +24,7 @@ const Dashboard = ({ user, sightings, getSightings }) => {
 
   const sightingsThisMonth = getSightingsThisMonth(sightings);
   
-  const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} fungusId={sighting.fungusId} date={sighting.date} location={sighting.location} notes={sighting.notes}/>);
+  const allSightings = sightings.map(sighting => <Sighting key={sighting.id} id={sighting.id} fungusId={sighting.fungusId} date={sighting.date} location={sighting.location} notes={sighting.notes} retrieveSightings={retrieveSightings} />);
 
   const region = formatRegions([user.region]);
 
