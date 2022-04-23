@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Header.css'
+import './Header.scss'
 
 const Header = ({ isLoggedIn, logout }) => {
   return (
     <header>
-      <h1>Mycophilia</h1>
+      <h1 className='logotype'>Mycophilia</h1>
       {isLoggedIn && <button onClick={e => logout(e)}>LOG OUT</button>}
     </header>
   )

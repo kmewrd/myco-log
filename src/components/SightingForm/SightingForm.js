@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { postSighting } from '../../apiCalls';
-import './SightingForm.css';
+import './SightingForm.scss';
 
 const SightingForm = ({ userId, fungusId }) => {
   const [date, setDate] = useState('');
@@ -46,17 +46,22 @@ const SightingForm = ({ userId, fungusId }) => {
   }
 
   return (
-    <form>
-      <button type='button' onClick={history.goBack}>Close</button>
-      <label htmlFor='date'>Date:</label>
-      <input type='text' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
-      <label htmlFor='location'>Location:</label>
-      <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
-      <label htmlFor='notes'>Notes:</label>
-      <input type='text' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)} />
-      {error && <p>{error}</p>}
-      <button onClick={e => submitSighting(e)}>SUBMIT</button>
-    </form>
+    <section className='sighting-form-wrapper'>
+      <button className='close-form-button' type='button' onClick={history.goBack}>X</button>
+      <form className='sighting-form'>
+        <h2>Record Sighting</h2>
+        <div className='sighting-inputs-container'>
+          <label htmlFor='date'>Date:</label>
+          <input type='date' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
+          <label htmlFor='location'>Location:</label>
+          <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
+          <label htmlFor='notes'>Notes:</label>
+          <textarea type='textarea' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)}></textarea>
+        </div>
+        {error && <p>{error}</p>}
+        <button className='submit-button' onClick={e => submitSighting(e)}>SUBMIT</button>
+      </form>
+    </section>
   )
 }
 

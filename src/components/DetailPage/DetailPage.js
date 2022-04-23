@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { fetchFungus } from '../../apiCalls';
 import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
-import './DetailPage.css';
+import { FiArrowLeft } from 'react-icons/fi';
+import './DetailPage.scss';
 
 const DetailPage = ({ id }) =>{
   const [fungus, setFungus] = useState({});
@@ -20,22 +21,32 @@ const DetailPage = ({ id }) =>{
 
   if (fungus.regions) {
     regions = formatRegions(fungus.regions);
-    regions = regions.map(region => <div key={region}>{region}</div>)
+    regions = regions.map(region => <div key={region} className='region'>{region}</div>)
   }
   
   return (
-    <section>
-      <img src={fungus.imageUrl} alt='' />
-      <Link to='/explore'>
-        <button>Back</button>
-      </Link>
-      <h2>{fungus.name}</h2>
-      <h3>{fungus.scientificName}</h3>
-      <p>{fungus.description}</p>
-      {regions}
-      <Link to={`/explore/${id}/record-sighting`}>
-        <button>Record Sighting</button>
-      </Link>
+    <section className='detail-wrapper'>
+      <div className='detail-inner-wrapper'>
+        <img src={fungus.imageUrl} alt='' />
+        <div className='fungus-header'>
+          <Link to='/explore'>
+            <FiArrowLeft color='F77F4F' size='2em' />
+          </Link>
+          <div className='fungus-names'>
+            <h2>{fungus.name}</h2>
+            <h3>{fungus.scientificName}</h3>
+          </div>
+        </div>
+        <div className='fungus-details'>
+          <p>{fungus.description}</p>
+          <div className='regions-wrapper'>
+            {regions}
+          </div>
+          <Link to={`/explore/${id}/record-sighting`}>
+            <button className='record-sighting-button'>RECORD SIGHTING</button>
+          </Link>
+        </div>
+      </div>
     </section>
   )
 }

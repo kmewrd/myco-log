@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;600;700&family=Aleo:ital,wght@0,400;0,700;1,300;1,400&display=swap');
+
+@import 'variables';
+
+main {
+  width: 100%;
+  height: 100vh;
+}
+
+button {
+  background-color: $dark-gray;
+  color: $cream;
+  height: 44px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    border: 3px solid $dark-gray;
+    background-color: rgba(0, 0, 0, 0);
+    color: $dark-gray;
+  }
+}
+
+h1,
+h2 {
+  font-family: 'Advent Pro', sans-serif;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3,
+h4 {
+  font-family: 'Aleo', sans-serif;
+}
+
+input {
+  height: 44px;
+  width: 278px;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 24px;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0 0.5em;
+}
+
+textarea {
+  width: 278px;
+  height: 200px;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0.5em;
+  font-family: 'Aleo', sans-serif;
+  font-size: 18px;
+}

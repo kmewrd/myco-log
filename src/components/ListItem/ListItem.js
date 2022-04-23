@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './ListItem.css';
+import { FiArrowRight } from 'react-icons/fi';
+import './ListItem.scss';
 
 const ListItem = ({ id, name, scientificName, imageUrl }) => {
   return (
-    <div>
+    <div className='list-item'>
       <img src={imageUrl} alt='' />
-      <h3>{name}</h3>
-      <h4>{scientificName}</h4>
+      <div className='list-item-names'>
+        <h3>{name}</h3>
+        <h4>{scientificName}</h4>
+      </div>
       <Link to={`/explore/${id}`}>
-        <button>View</button>
+        <FiArrowRight color='F77F4F' size='2em' />
       </Link>
     </div>
   )
@@ -22,5 +25,5 @@ ListItem.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   scientificName: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string
+  imageUrl: PropTypes.string.isRequired
 }

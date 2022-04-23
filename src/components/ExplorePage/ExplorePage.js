@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ListItem from '../ListItem/ListItem';
 import SearchBar from '../SearchBar/SearchBar';
 import NavBar from '../NavBar/NavBar';
-import './ExplorePage.css';
+import './ExplorePage.scss';
 
 const ExplorePage = ({ regionalFungi, getFungi, region }) => {
   const [filter, setFilter] = useState(null);
@@ -39,26 +39,28 @@ const ExplorePage = ({ regionalFungi, getFungi, region }) => {
   }
 
   return (
-    <section>
+    <div className='explore-wrapper'>
       <NavBar />
-      <h2>Fungus Finder</h2>
-      <SearchBar search={search}/>
-      {filter && !filteredFungi.length && (
-        <div>
-          <button onClick={() => setFilter(null)}>Clear Search</button>
-          <p>No results found for {filter}</p>
+      <section className='search-and-list'>
+        <h2>Fungus Finder</h2>
+        <SearchBar search={search}/>
+        {filter && !filteredFungi.length && (
+          <div>
+            <p>No results found for {filter}</p>
+            <button onClick={() => setFilter(null)}>Clear Search</button>
+          </div>
+        )}
+        {filter && !!filteredFungi.length && (
+          <div>
+            <p>Showing results for <span className='search-term'>{filter}</span></p>
+            <button onClick={() => setFilter(null)}>Clear Search</button>
+          </div>
+        )}
+        <div className='fungus-list-wrapper'>
+          {fungi}
         </div>
-      )}
-      {filter && !!filteredFungi.length && (
-        <div>
-          <button onClick={() => setFilter(null)}>Clear Search</button>
-          <p>Showing results for {filter}</p>
-        </div>
-      )}
-      <div>
-        {fungi}
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

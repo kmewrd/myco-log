@@ -6,9 +6,9 @@ import ExplorePage from './components/ExplorePage/ExplorePage';
 import DetailPage from './components/DetailPage/DetailPage';
 import SightingForm from './components/SightingForm/SightingForm';
 import NotFound from './components/NotFound/NotFound';
-import { fetchUser, fetchSightings, fetchRegionalFungi } from './apiCalls';
+import { fetchUser, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 
 const App = () => {
   const [isLoggedIn, toggleIsLoggedIn] = useState(false);
