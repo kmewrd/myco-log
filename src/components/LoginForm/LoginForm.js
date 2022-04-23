@@ -32,8 +32,10 @@ const LoginForm = ({ completeLogin }) => {
       <form className='login-form'>
         <h2>Welcome!</h2>
         <h3>Please sign in.</h3>
-        <input name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-        <input name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+        <div className='login-inputs-container'>
+          <input name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+          <input name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+        </div>
         {error && <p>{error}</p>}
         <button onClick={e => validateLogin(e)}>SIGN IN</button>
       </form>

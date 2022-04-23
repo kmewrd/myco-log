@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;600;700&family=Aleo:ital,wght@0,400;0,700;1,300;1,400&display=swap');
+
+@import '../../variables';
+
 .background-image {
   object-fit: cover;
   width: 100%;
@@ -7,6 +11,53 @@
 }
 
 .login-form {
-  background-color: #C4C9AF;
-  /* max-width: 400px; */
+  background-color: $sage-green;
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  width: 350px;
+  height: 436px;
+  top: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-top: 2em;
+
+  h2, h3 {
+    font-family: 'Aleo', sans-serif;
+    text-align: center;
+    margin: 0.2em 0;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  button {
+    margin-top: 2em;
+  }
+}
+
+.login-inputs-container {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2em;
+
+  input {
+    height: 44px;
+    width: 278px;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 24px;
+    box-sizing: border-box;
+    border: 0;
+  }
 }
