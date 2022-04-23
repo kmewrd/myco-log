@@ -1,52 +1,48 @@
-import { Component } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './LoginForm.css';
 
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      error: null
-    }
-  }
+const LoginForm = ({ completeLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  validateLogin = e => {
+  const validateLogin = e => {
     e.preventDefault();
 
-    if (this.state.username === 'mycophile5044' && this.state.password === 'fungi') {
-      this.props.completeLogin(this.state.username);
-      this.clearForm();
-    } else if (!this.state.username || !this.state.password) {
-      this.setState({ error: 'Please fill in both fields.' })
+    if (username === 'mycophile5044' && password === 'fungi') {
+      completeLogin(username);
+      clearForm();
+    } else if (!username || !password) {
+      setError('Please fill in both fields.');
     } else {
-      this.setState({ error: 'Invalid username or password. Please try again.' })
+      setError('Invalid username or password. Please try again.');
     }
   }
 
-  clearForm = () => {
-    this.setState({ username: '', password: '', error: null });
+  const clearForm = () => {
+    setUsername('');
+    setPassword('');
+    setError('');
   }
 
-  render() {
-    return (
-      <div className='login-form-wrapper'>
-        <img className='background-image' src='https://images.unsplash.com/photo-1543904856-8257e34283d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80' />
-        <form className='login-form'>
-          <h2>Welcome!</h2>
-          <h3>Please sign in.</h3>
-          <input name='username' type='text' placeholder='Username' value={this.state.username} onChange={e => this.handleChange(e)} />
-          <input name='password' type='password' placeholder='Password' value={this.state.password} onChange={e => this.handleChange(e)} />
-          {this.state.error && <p>{this.state.error}</p>}
-          <button onClick={e => this.validateLogin(e)}>SIGN IN</button>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div className='login-form-wrapper'>
+      <img className='background-image' src='https://images.unsplash.com/photo-1543904856-8257e34283d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80' alt='Three small, light-colored mushrooms with long stems cling to a patch of damp bark.' />
+      <form className='login-form'>
+        <h2>Welcome!</h2>
+        <h3>Please sign in.</h3>
+        <input name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
+        <input name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+        {error && <p>{error}</p>}
+        <button onClick={e => validateLogin(e)}>SIGN IN</button>
+      </form>
+    </div>
+  )
 }
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  completeLogin: PropTypes.func.isRequired
+}

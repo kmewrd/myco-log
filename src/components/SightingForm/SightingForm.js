@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { postSighting } from '../../apiCalls';
 import './SightingForm.css';
 
-const SightingForm = ({ user, id }) => {
+const SightingForm = ({ userId, fungusId }) => {
   const [date, setDate] = useState('');
   const [location, setLocation] = useState('');
   const [notes, setNotes] = useState('');
@@ -36,8 +37,8 @@ const SightingForm = ({ user, id }) => {
   const createSighting = () => {
     return {
       id: Date.now(),
-      fungusId: parseInt(id),
-      userId: user.id,
+      fungusId: parseInt(fungusId),
+      userId: userId,
       date: date,
       location: location,
       notes: notes
@@ -45,15 +46,23 @@ const SightingForm = ({ user, id }) => {
   }
 
   return (
-      <form>
-        <button type='button' onClick={history.goBack}>Close</button>
-        <input type='text' name='date' value={date} onChange={e => setDate(e.target.value)} />
-        <input type='text' name='location' value={location} onChange={e => setLocation(e.target.value)} />
-        <input type='text' name='notes' value={notes} onChange={e => setNotes(e.target.value)} />
-        {error && <p>{error}</p>}
-        <button onClick={e => submitSighting(e)}>SUBMIT</button>
-      </form>
-    )
+    <form>
+      <button type='button' onClick={history.goBack}>Close</button>
+      <label htmlFor='date'>Date:</label>
+      <input type='text' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
+      <label htmlFor='location'>Location:</label>
+      <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
+      <label htmlFor='notes'>Notes:</label>
+      <input type='text' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)} />
+      {error && <p>{error}</p>}
+      <button onClick={e => submitSighting(e)}>SUBMIT</button>
+    </form>
+  )
 }
 
 export default SightingForm;
+
+SightingForm.propTypes = {
+  userId: PropTypes.number.isRequired,
+  fungusId: PropTypes.string.isRequired
+}

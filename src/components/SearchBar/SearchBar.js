@@ -1,25 +1,22 @@
-import { Component } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-class SearchBar extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchField: ''
-    }
-  }
+const SearchBar = ({ search }) => {
+  const [searchField, setSearchField] = useState('');
 
-  handleChange = e => {
-    this.setState({ searchField: e.target.value })
-  }
-
-  render() {
-    return (
-      <form>
-        <input type='text' placeholder='Search...' value={this.state.searchField} onChange={e => this.handleChange(e)} />
-        <button>GO</button>
-      </form>
-    )
-  }
+  return (
+    <form>
+      <input type='text' placeholder='Search...' value={searchField} onChange={e => setSearchField(e.target.value)} />
+      <button type='button' onClick={() => {
+        search(searchField)
+        setSearchField('');
+      }}>GO</button>
+    </form>
+  )
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+  search: PropTypes.func.isRequired
+}

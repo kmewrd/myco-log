@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchFungus } from '../../apiCalls';
+import { formatRegions } from '../../utils';
 import { Link } from 'react-router-dom';
 import './DetailPage.css';
 
@@ -17,12 +19,13 @@ const DetailPage = ({ id }) =>{
   let regions;
 
   if (fungus.regions) {
-    regions = fungus.regions.map(region => <div key={region}>{region}</div>)
+    regions = formatRegions(fungus.regions);
+    regions = regions.map(region => <div key={region}>{region}</div>)
   }
   
   return (
     <section>
-      <img src={fungus.imageUrl} />
+      <img src={fungus.imageUrl} alt='' />
       <Link to='/explore'>
         <button>Back</button>
       </Link>
@@ -38,3 +41,7 @@ const DetailPage = ({ id }) =>{
 }
 
 export default DetailPage;
+
+DetailPage.propTypes = {
+  id: PropTypes.string.isRequired
+}
