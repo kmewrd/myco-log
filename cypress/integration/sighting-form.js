@@ -31,4 +31,25 @@ describe('Sighting form', () => {
     cy.url()
       .should('eq', 'http://localhost:3000/explore/1/record-sighting')
   })
+
+  it('should have a field to enter a date, a location, and notes', () => {
+    cy.get('input[id="date"]')
+      .should('be.visible')
+      .get('input[id="location"]')
+      .should('be.visible')
+      .get('textarea[id="notes"]')
+      .should('be.visible')
+  })
+
+  it('should update the input value when a user types into a field', () => {
+    cy.get('input[id="date"]')
+      .type('2022-03-05')
+      .should('have.value', '2022-03-05')
+      .get('input[id="location"]')
+      .type('Memphis, TN')
+      .should('have.value', 'Memphis, TN')
+      .get('textarea[id="notes"]')
+      .type('N/A')
+      .should('have.value', 'N/A')
+  })
 })
