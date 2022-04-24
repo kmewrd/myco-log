@@ -10,6 +10,8 @@ describe('Explore page', () => {
 
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/40', { fixture: 'fungus-40.json' }).as('fungus-40')
 
+    cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungi/pacific', { fixture: 'regional-fungi.json' }).as('all-fungi')
+
     cy.visit('http://localhost:3000')
       .get('input:first')
       .type('mycophile5044')
@@ -101,5 +103,23 @@ describe('Explore page', () => {
       .click()
       .get('div[class="explore-wrapper"]')
       .should('contain', 'No results found for blue')
+  })
+})
+
+describe('Network error on Explore page', () => {
+  it('should display an error message if there\'s a network failure', () => {
+    cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungi/pacific', { forceNetworkError: true }).as('network-error')
+
+    cy.visit('http://localhost:3000')
+      .get('input:first')
+      .type('mycophile5044')
+      .get('input:last')
+      .type('fungi')
+      .get('button')
+      .click()
+      .get('nav a:last')
+      .click()
+      .get('main')
+      .should('contain', 'Unable to retrieve regional fungi information. Please try again later.')
   })
 })
