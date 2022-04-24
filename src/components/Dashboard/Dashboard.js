@@ -12,7 +12,6 @@ const Dashboard = ({ user, sightings, getSightings }) => {
   }, [])
 
   const retrieveSightings = () => {
-    console.log('working on it...');
     fetchSightings()
       .then(data => {
         const userSightings = data.filter(sighting => sighting.userId === user.id);
