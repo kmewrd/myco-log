@@ -35,8 +35,8 @@ const LoginForm = ({ completeLogin, isLoading }) => {
         <h3>Please sign in.</h3>
         {!isLoading ? (
           <div className='login-inputs-container'>
-            <input name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} />
-            <input name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} />
+            <input name='username' type='text' placeholder='Username' value={username} onChange={e => setUsername(e.target.value)} required />
+            <input name='password' type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)} required />
           </div>
         ) : <ReactLoading type='spin' color='#3D3433' height='150' width='150' />}
         {error && <p>{error}</p>}
