@@ -27,6 +27,14 @@ describe('Dashboard view', () => {
       .should('contain', 'LOG OUT')
   })
 
+  it('should return a user to the login page if the logout button is clicked', () => {
+    cy.get('header button')
+      .click()
+      .get('main')
+      .should('not.contain', 'Dashboard')
+      .and('contain', 'Please sign in.')
+  })
+
   it('should contain a navigation bar', () => {
     cy.get('nav')
       .should('be.visible')
