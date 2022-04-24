@@ -57,5 +57,8 @@ describe('Explore page', () => {
       .should('contain', 'Pacific Golden Chantarelle')
   })
 
-  
+  it('should contain a search bar', () => {
+    cy.get('form')
+      .should('have.class', 'search-bar')
+  })
 })
