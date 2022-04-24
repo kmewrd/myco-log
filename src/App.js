@@ -82,8 +82,7 @@ const App = () => {
           }} />
           <Route path='/explore/:id/record-sighting' render={({ match }) => {
             return isLoggedIn ? <SightingForm userId={user.id} fungusId={match.params.id} /> : <Redirect to='/' />
-          }}>
-          </Route>
+          }} />
           <Route path='/*'>
             <NotFound />
           </Route>

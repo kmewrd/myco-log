@@ -49,8 +49,8 @@ const SightingForm = ({ userId, fungusId }) => {
 
   return (
     <section className='sighting-form-wrapper'>
-      <button className='close-form-button' type='button' onClick={history.goBack} aria-label='Close form'>X</button>
       <form className='sighting-form'>
+      <button className='close-form-button' type='button' onClick={history.goBack} aria-label='Close form'>X</button>
         <h2>Record Sighting</h2>
         <div className='sighting-inputs-container'>
           <label htmlFor='date'>Date:</label>
