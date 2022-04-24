@@ -32,4 +32,20 @@ describe('Explore page', () => {
     cy.url()
       .should('eq', 'http://localhost:3000/explore')
   })
+
+  it('should display a list of regional fungi', () => {
+    cy.get('div[class="fungus-list-wrapper"]')
+      .should('be.visible')
+      .get('div[id="1"]')
+      .should('contain', 'Pacific Golden Chantarelle')
+      .get('div[id="5"]')
+      .should('contain', 'Lion\'s Mane')
+  })
+
+  it('each listing should contain an image, common name, and scientific name', () => {
+    cy.get('div[id="1"]')
+      .should('have.descendants', 'img')
+      .and('contain', 'Pacific Golden Chantarelle')
+      .and('contain', 'Cantharellus formosus')
+  })
 })
