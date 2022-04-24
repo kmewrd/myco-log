@@ -71,7 +71,7 @@ describe('Dashboard view', () => {
   })
 })
 
-describe('Network error on Dashboard', () => {
+describe('Network error on Homepage', () => {
   it('should display an error message if there\'s a network failure', () => {
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/users/5044', { forceNetworkError: true }).as('network-error')
 
