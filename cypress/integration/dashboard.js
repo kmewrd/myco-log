@@ -48,4 +48,9 @@ describe('Dashboard view', () => {
       .and('contain', 'Location:')
       .and('contain', 'Notes:')
   })
+
+  it('each sighting card should contain a delete button', () => {
+    cy.get('div[class="sighting-card"]')
+      .should('have.descendants', 'button')
+  })
 })
