@@ -49,16 +49,16 @@ const SightingForm = ({ userId, fungusId }) => {
 
   return (
     <section className='sighting-form-wrapper'>
-      <button className='close-form-button' type='button' onClick={history.goBack}>X</button>
+      <button className='close-form-button' type='button' onClick={history.goBack} aria-label='Close form'>X</button>
       <form className='sighting-form'>
         <h2>Record Sighting</h2>
         <div className='sighting-inputs-container'>
           <label htmlFor='date'>Date:</label>
-          <input type='date' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} />
+          <input type='date' name='date' id='date' value={date} onChange={e => setDate(e.target.value)} required />
           <label htmlFor='location'>Location:</label>
-          <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} />
+          <input type='text' name='location' id='location' value={location} onChange={e => setLocation(e.target.value)} required />
           <label htmlFor='notes'>Notes:</label>
-          <textarea type='textarea' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)}></textarea>
+          <textarea type='textarea' name='notes' id='notes' value={notes} onChange={e => setNotes(e.target.value)} required></textarea>
         </div>
         {error && <p>{error}</p>}
         {successMsg && <p>{successMsg}</p>}
