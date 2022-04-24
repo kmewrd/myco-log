@@ -45,7 +45,10 @@ const App = () => {
 
   const getFungi = region => {
     fetchRegionalFungi(region)
-      .then(data => setRegionalFungi(data))
+      .then(data => {
+        setRegionalFungi(data);
+        setError(null);
+      })
       .catch(err => setError('Unable to retrieve regional fungi information. Please try again later.'))
   }
 

@@ -15,7 +15,12 @@ const DetailPage = ({ id }) =>{
   }, [])
 
   const getFungus = () => {
-    fetchFungus(id).then(data => setFungus(data)).catch(err => setError('Unable to retrieve fungus details. Please try again later.'));
+    fetchFungus(id)
+      .then(data => {
+        setFungus(data);
+        setError(null);
+      })
+      .catch(err => setError('Unable to retrieve fungus details. Please try again later.'));
   }
 
   let regions;
