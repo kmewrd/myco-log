@@ -15,6 +15,13 @@
   align-items: center;
   position: absolute;
   right: 0;
+  background-color: $sage-green;
+  border: 0;
+  color: $dark-gray;
+
+  &:hover {
+    border: 0;
+  }
 }
 
 .sighting-form {
