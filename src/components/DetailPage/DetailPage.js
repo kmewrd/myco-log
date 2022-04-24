@@ -8,13 +8,14 @@ import './DetailPage.scss';
 
 const DetailPage = ({ id }) =>{
   const [fungus, setFungus] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getFungus();
   }, [])
 
   const getFungus = () => {
-    fetchFungus(id).then(data => setFungus(data)).catch(err => console.log(err));
+    fetchFungus(id).then(data => setFungus(data)).catch(err => setError('Unable to retrieve fungus details. Please try again later.'));
   }
 
   let regions;
