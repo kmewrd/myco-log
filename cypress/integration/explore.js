@@ -42,10 +42,20 @@ describe('Explore page', () => {
       .should('contain', 'Lion\'s Mane')
   })
 
-  it('each listing should contain an image, common name, and scientific name', () => {
+  it('each listing should contain an image, common name, scientific name, and link', () => {
     cy.get('div[id="1"]')
       .should('have.descendants', 'img')
       .and('contain', 'Pacific Golden Chantarelle')
       .and('contain', 'Cantharellus formosus')
+      .and('have.descendants', 'a')
   })
+
+  it('each listing link should take the user to a detail page for that fungus', () => {
+    cy.get('div[id="1"] a')
+      .click()
+      .get('main')
+      .should('contain', 'Pacific Golden Chantarelle')
+  })
+
+  
 })
