@@ -60,5 +60,24 @@ describe('Explore page', () => {
   it('should contain a search bar', () => {
     cy.get('form')
       .should('have.class', 'search-bar')
+      .and('have.descendants', 'button')
+      .get('form button')
+      .should('contain', 'GO')
+  })
+
+  it('should update the input value when a user types into the search bar', () => {
+    cy.get('form input')
+      .type('red')
+      .should('have.value', 'red')
+  })
+
+  it('should update the fungi list when a user types in the search bar and clicks GO', () => {
+    cy.get('form input')
+      .type('red')
+      .get('form button')
+      .click()
+      .get('div[class="fungus-list-wrapper"]')
+      .should('contain', 'Showing results for red')
+      .and('not.contain', 'Pacific Yellow Chantarelle')
   })
 })
