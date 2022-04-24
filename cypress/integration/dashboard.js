@@ -26,7 +26,26 @@ describe('Dashboard view', () => {
       .and('contain', 'Explore')
   })
 
-  // it('should contain the user\'s region and sighting stats', () => {
+  it('should contain the user\'s region and sighting stats', () => {
+    cy.get('main div:first')
+      .should('contain', 'Region')
+      .and('contain', 'Total sightings')
+      .and('contain', 'Sightings this month')
+  })
 
-  // })
+  it('should contain a section with the user\'s sightings', () => {
+    cy.get('main div[class="my-sightings"]')
+      .should('contain', 'My Sightings')
+      .get('div[class="sighting-card"]')
+      .should('be.visible')
+  })
+
+  it('each sighting card should contain an image, name, date, location, and notes', () => {
+    cy.get('div[class="sighting-card"]')
+      .should('have.descendants', 'img')
+      .and('contain', 'Cinnabar Red Polypore')
+      .and('contain', 'Date:')
+      .and('contain', 'Location:')
+      .and('contain', 'Notes:')
+  })
 })
