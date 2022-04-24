@@ -1,0 +1,22 @@
+{
+  "id": 40,
+  "name": "Honey Mushroom",
+  "regions": [
+    "southwest",
+    "rocky-mountains",
+    "pacific",
+    "midwest",
+    "northeast",
+    "southeast"
+  ],
+  "description": "Armillaria ostoyae is a species of fungus, pathogenic to trees, in the family Physalacriaceae. In the western United States, it is the most common variant of the group of species under the name Armillaria mellea. A. ostoyae is common on both hardwood and conifer wood in forests west of the Cascade Range in Oregon, United States. It has decurrent gills and the stipe has a ring. The mycelium invades the sapwood and is able to disseminate over great distances under the bark or between trees in the form of black rhizomorphs. In most areas of North America, Armillaria ostoyae can be separated from other species by its physical features: cream-brown colors, prominent cap scales, and a well-developed stem ring distinguish it from other Armillaria. Armillaria ostoyae grows and spreads primarily underground, such that the bulk of the organism is not visible from the surface.",
+  "scientificName": "Armillaria ostoyae",
+  "characteristics": [
+    "beige",
+    "brown",
+    "tan",
+    "scales",
+    "gills"
+  ],
+  "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/4694601/large.jpg"
+}

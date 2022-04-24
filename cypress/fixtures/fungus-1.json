@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "Pacific Golden Chantarelle",
+  "regions": [
+    "pacific"
+  ],
+  "description": "Chanterelles can be found in shady areas under conifer trees, growing out of the soil. In Washington, they have a symbiotic relationship with Douglas fir, spruce, and hemlock. They have an orange coloring with ridges on the underside that are referred to as “false gills.” When cut open, the flesh inside of the stalk is solid, with white coloring.",
+  "scientificName": "Cantharellus formosus",
+  "characteristics": [
+    "yellow",
+    "yellow-orange",
+    "gills",
+    "false gills",
+    "wavy",
+    "funnel"
+  ],
+  "imageUrl": "http://www.scmycoflora.org/genera/cantharellus/images/Cantharellus-formosus_1.jpg"
+}
