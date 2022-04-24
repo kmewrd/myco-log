@@ -59,4 +59,12 @@ describe('Sighting form', () => {
       .get('form')
       .should('contain', 'Please complete all fields.')
   })
+
+  it('should have a close button that returns the user to the detail page without form submission', () => {
+    cy.get('button[class="close-form-button"]')
+      .click()
+      .get('main')
+      .should('contain', 'Pacific Golden Chantarelle')
+      .and('not.have.descendants', 'form')
+  })
 })
