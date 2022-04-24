@@ -55,11 +55,18 @@ describe('Detail page', () => {
     cy.get('main')
       .should('have.descendants', 'button')
   })
+
+  it('the sighting button should take the user to a form and hide the current fungus details', () => {
+    cy.get('main button')
+      .click()
+      .get('main')
+      .should('have.descendants', 'form[class="sighting-form"]')
+      .and('not.contain', 'Pacific Golden Chantarelle')
+  })
 })
 
 describe('Network error on Detail page', () => {
-  // NOT PASSING
-  it.only('should display an error message if there\'s a network failure', () => {
+  it('should display an error message if there\'s a network failure', () => {
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/users/5044', { fixture: 'user.json' }).as('user-data')
 
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/sightings', { fixture: 'sightings.json' }).as('all-sightings')

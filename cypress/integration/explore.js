@@ -57,6 +57,7 @@ describe('Explore page', () => {
       .click()
       .get('main')
       .should('contain', 'Pacific Golden Chantarelle')
+      .and('not.contain', 'Wood Blewit')
   })
 
   it('should contain a search bar', () => {
