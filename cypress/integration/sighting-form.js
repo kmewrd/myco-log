@@ -4,7 +4,7 @@ describe('Sighting form', () => {
 
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/sightings', { fixture: 'sightings.json' }).as('all-sightings')
 
-    cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/1', { fixture: 'fungus-1.json' }).as('fungus-1')
+    cy.intercept('GET', 'https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/1', { fixture: 'fungus-1.json' }).as('fungus-1')
 
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/34', { fixture: 'fungus-34.json' }).as('fungus-34')
 
@@ -66,5 +66,18 @@ describe('Sighting form', () => {
       .get('main')
       .should('contain', 'Pacific Golden Chantarelle')
       .and('not.have.descendants', 'form')
+  })
+
+  it('should display a success message after submitting the form', () => {
+    cy.intercept('POST', 'https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/1', { fixture: 'successful-post.json' }).as('post-sighting')
+
+    cy.get('input[id="date"]')
+      .type('2022-03-05')
+      .get('input[id="location"]')
+      .type('Memphis, TN')
+      .get('textarea[id="notes"]')
+      .type('N/A')
+      .get('main button:last')
+      .click()
   })
 })
