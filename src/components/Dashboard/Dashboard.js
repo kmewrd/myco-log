@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Sighting from '../Sighting/Sighting';
 import NavBar from '../NavBar/NavBar';
-import { fetchSightings } from '../../apiCalls';
+import { fetchData } from '../../apiCalls';
 import { formatRegions, getSightingsThisMonth } from '../../utils';
 import './Dashboard.scss';
 
@@ -12,7 +12,7 @@ const Dashboard = ({ user, sightings, getSightings }) => {
   }, [])
 
   const retrieveSightings = () => {
-    fetchSightings()
+    fetchData()
       .then(data => {
         const userSightings = data.filter(sighting => sighting.userId === user.id);
 

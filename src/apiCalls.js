@@ -1,13 +1,12 @@
 const url = 'https://unidentified-fungus-outdoors.herokuapp.com/api/v1';
 
-const fetchUser = username => {
-  const userId = username.split('mycophile').join('');
-
-  return fetch(`${url}/users/${userId}`).then(response => response.json())
-}
-
-const fetchSightings = () => {
-  return fetch(`${url}/sightings`).then(response => response.json())
+const fetchData = username => {
+  if (username) {
+    const userId = username.split('mycophile').join('');
+    return fetch(`${url}/users/${userId}`).then(response => response.json())
+  } else {
+    return fetch(`${url}/sightings`).then(response => response.json())
+  }
 }
 
 const fetchRegionalFungi = region => {
@@ -30,4 +29,4 @@ const deleteSighting = id => {
   return fetch(`${url}/sightings/${id}`, { method: 'DELETE' }).then(response => response.json())
 }
 
-export { fetchUser, fetchSightings, fetchRegionalFungi, fetchFungus, postSighting, deleteSighting };
+export { fetchData, fetchRegionalFungi, fetchFungus, postSighting, deleteSighting };

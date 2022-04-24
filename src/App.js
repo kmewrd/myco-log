@@ -6,7 +6,7 @@ import ExplorePage from './components/ExplorePage/ExplorePage';
 import DetailPage from './components/DetailPage/DetailPage';
 import SightingForm from './components/SightingForm/SightingForm';
 import NotFound from './components/NotFound/NotFound';
-import { fetchUser, fetchRegionalFungi } from './apiCalls';
+import { fetchData, fetchRegionalFungi } from './apiCalls';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.scss';
 
@@ -32,7 +32,7 @@ const App = () => {
   }
 
   const initializeUser = username => {
-    fetchUser(username)
+    fetchData(username)
       .then(data => {
         setUser(data);
         toggleIsLoggedIn(true);
