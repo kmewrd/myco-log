@@ -41,4 +41,13 @@ describe('Detail page', () => {
       .get('div[class="region"]')
       .should('contain', 'Pacific')
   })
+
+  it('should contain a button that takes the user back to the Explore page', () => {
+    cy.get('a:first')
+      .click()
+      .url()
+      .should('eq', 'http://localhost:3000/explore')
+      .get('main')
+      .should('not.contain', 'Chanterelles can be found in shady areas')
+  })
 })
