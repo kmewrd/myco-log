@@ -11,7 +11,7 @@ const DetailPage = ({ id }) =>{
 
   useEffect(() => {
     getFungus();
-  })
+  }, [])
 
   const getFungus = () => {
     fetchFungus(id).then(data => setFungus(data)).catch(err => console.log(err));

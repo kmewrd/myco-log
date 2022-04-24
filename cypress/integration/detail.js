@@ -10,6 +10,8 @@ describe('Detail page', () => {
 
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungus/40', { fixture: 'fungus-40.json' }).as('fungus-40')
 
+    cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/fungi/pacific', { fixture: 'regional-fungi.json' }).as('all-fungi')
+
     cy.visit('http://localhost:3000')
       .get('input:first')
       .type('mycophile5044')
@@ -24,9 +26,19 @@ describe('Detail page', () => {
   })
 
   it('should update the url when a user clicks on the detail page link', () => {
-    cy.get('div[id="1"] a')
-      .click()
-      .url()
+    cy.url()
       .should('eq', 'http://localhost:3000/explore/1')
+  })
+
+  it('should contain an image, common name, scientific name, description, and regions where the fungus is found', () => {
+    cy.get('main')
+      .should('have.descendants', 'img')
+      .and('contain', 'Pacific Golden Chantarelle')
+      .and('contain', 'Cantharellus formosus')
+      .and('have.descendants', 'div[class="fungus-details"]')
+      .get('div[class="fungus-details"]')
+      .should('contain', 'Chanterelles can be found in shady areas')
+      .get('div[class="region"]')
+      .should('contain', 'Pacific')
   })
 })
