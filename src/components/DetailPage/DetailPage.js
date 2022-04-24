@@ -27,6 +27,12 @@ const DetailPage = ({ id }) =>{
   
   return (
     <section className='detail-wrapper'>
+      {error && (
+        <div>
+          <p>{error}</p>
+          <Link to='/dashboard'>Return to home</Link>
+        </div>
+      )}
       <div className='detail-inner-wrapper'>
         <img src={fungus.imageUrl} alt='' />
         <div className='fungus-header'>
