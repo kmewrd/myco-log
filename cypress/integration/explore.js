@@ -93,4 +93,13 @@ describe('Explore page', () => {
       .get('div[class="fungus-list-wrapper"]')
       .should('contain', 'Pacific Golden Chantarelle')
   })
+
+  it('should show an appropriate message if no results match the search criteria', () => {
+    cy.get('form input')
+      .type('blue')
+      .get('form button')
+      .click()
+      .get('div[class="explore-wrapper"]')
+      .should('contain', 'No results found for blue')
+  })
 })
