@@ -19,6 +19,14 @@ describe('Dashboard view', () => {
       .click()
   })
 
+  it('should contain a logout button in the header', () => {
+    cy.get('header')
+      .should('be.visible')
+      .and('have.descendants', 'button')
+      .get('header button')
+      .should('contain', 'LOG OUT')
+  })
+
   it('should contain a navigation bar', () => {
     cy.get('nav')
       .should('be.visible')
