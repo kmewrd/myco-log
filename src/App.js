@@ -39,7 +39,10 @@ const App = () => {
         toggleIsLoading(false);
         setError(null);
       })
-      .catch(err => setError('Unable to retrieve user data. Please try again later.'))
+      .catch(err => {
+        toggleIsLoading(false);
+        setError('Unable to retrieve user data. Please try again later.');
+      })
   }
 
   const getSightings = sightings => {
@@ -52,14 +55,17 @@ const App = () => {
         setRegionalFungi(data);
         setError(null);
       })
-      .catch(err => setError('Unable to retrieve regional fungi information. Please try again later.'))
+      .catch(err => {
+        toggleIsLoading(false);
+        setError('Unable to retrieve regional fungi information. Please try again later.');
+      })
   }
 
   return (
     <div>
       <Header isLoggedIn={isLoggedIn} logout={logout} />
       <main>
-        {error && <p>{error}</p>}
+        {error && <p className='error-message'>{error}</p>}
         <Switch>
           <Route exact path='/'>
             {!isLoggedIn ? <LoginForm completeLogin={completeLogin} isLoading={isLoading} /> : <Redirect to='/dashboard' />}
