@@ -12,12 +12,14 @@ import './App.scss';
 
 const App = () => {
   const [isLoggedIn, toggleIsLoggedIn] = useState(false);
+  const [isLoading, toggleIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [sightings, setSightings] = useState([]);
   const [regionalFungi, setRegionalFungi] = useState([]);
   const [error, setError] = useState(null);
 
   const completeLogin = username => {
+    toggleIsLoading(true);
     initializeUser(username);
   }
 
@@ -34,9 +36,13 @@ const App = () => {
       .then(data => {
         setUser(data);
         toggleIsLoggedIn(true);
+        toggleIsLoading(false);
         setError(null);
       })
-      .catch(err => setError('Unable to retrieve user data. Please try again later.'))
+      .catch(err => {
+        toggleIsLoading(false);
+        setError('Unable to retrieve user data. Please try again later.');
+      })
   }
 
   const getSightings = sightings => {
@@ -45,18 +51,24 @@ const App = () => {
 
   const getFungi = region => {
     fetchRegionalFungi(region)
-      .then(data => setRegionalFungi(data))
-      .catch(err => setError('Unable to retrieve regional fungi information. Please try again later.'))
+      .then(data => {
+        setRegionalFungi(data);
+        setError(null);
+      })
+      .catch(err => {
+        toggleIsLoading(false);
+        setError('Unable to retrieve regional fungi information. Please try again later.');
+      })
   }
 
   return (
     <div>
       <Header isLoggedIn={isLoggedIn} logout={logout} />
       <main>
-        {error && <p>{error}</p>}
+        {error && <p className='error-message'>{error}</p>}
         <Switch>
           <Route exact path='/'>
-            {!isLoggedIn ? <LoginForm completeLogin={completeLogin} /> : <Redirect to='/dashboard' />}
+            {!isLoggedIn ? <LoginForm completeLogin={completeLogin} isLoading={isLoading} /> : <Redirect to='/dashboard' />}
           </Route>
           <Route exact path='/dashboard'>
             {isLoggedIn ? <Dashboard user={user} sightings={sightings} getSightings={getSightings} /> : <Redirect to='/' />}

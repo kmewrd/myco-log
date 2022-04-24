@@ -15,7 +15,12 @@ const DetailPage = ({ id }) =>{
   }, [])
 
   const getFungus = () => {
-    fetchFungus(id).then(data => setFungus(data)).catch(err => setError('Unable to retrieve fungus details. Please try again later.'));
+    fetchFungus(id)
+      .then(data => {
+        setFungus(data);
+        setError(null);
+      })
+      .catch(err => setError('Unable to retrieve fungus details. Please try again later.'));
   }
 
   let regions;
@@ -28,7 +33,7 @@ const DetailPage = ({ id }) =>{
   return (
     <section className='detail-wrapper'>
       {error && (
-        <div>
+        <div className='error-message'>
           <p>{error}</p>
           <Link to='/dashboard'>Return to home</Link>
         </div>
@@ -37,7 +42,9 @@ const DetailPage = ({ id }) =>{
         <img src={fungus.imageUrl} alt='' />
         <div className='fungus-header'>
           <Link to='/explore'>
-            <FiArrowLeft color='F77F4F' size='2em' />
+            <div aria-label='Back to previous page'>
+              <FiArrowLeft color='F77F4F' size='2em' />
+            </div>
           </Link>
           <div className='fungus-names'>
             <h2>{fungus.name}</h2>

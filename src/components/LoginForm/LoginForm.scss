@@ -18,13 +18,13 @@
   margin-left: auto;
   margin-right: auto;
   width: 350px;
-  height: 436px;
+  min-height: 436px;
   top: 230px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding-top: 2em;
+  padding: 2em 0;
 
   h2, h3 {
     font-family: 'Aleo', sans-serif;
