@@ -30,7 +30,7 @@ const SightingForm = ({ userId, fungusId }) => {
         })
         .catch(err => setError('Something went wrong. Please try again later.'))
     } else {
-      setError('Please complete all required fields.' );
+      setError('Please complete all fields.' );
     }
   }
 

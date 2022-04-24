@@ -52,4 +52,11 @@ describe('Sighting form', () => {
       .type('N/A')
       .should('have.value', 'N/A')
   })
+
+  it('should show an error message on button click if one or more fields is empty', () => {
+    cy.get('main button:last')
+      .click()
+      .get('form')
+      .should('contain', 'Please complete all fields.')
+  })
 })
