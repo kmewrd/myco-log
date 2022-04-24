@@ -33,7 +33,7 @@ const DetailPage = ({ id }) =>{
   return (
     <section className='detail-wrapper'>
       {error && (
-        <div>
+        <div className='error-message'>
           <p>{error}</p>
           <Link to='/dashboard'>Return to home</Link>
         </div>

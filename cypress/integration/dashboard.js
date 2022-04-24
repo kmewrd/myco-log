@@ -72,7 +72,7 @@ describe('Dashboard view', () => {
 })
 
 describe('Network error on Homepage', () => {
-  it.only('should display an error message if there\'s a network failure', () => {
+  it('should display an error message if there\'s a network failure', () => {
     cy.intercept('https://unidentified-fungus-outdoors.herokuapp.com/api/v1/users/5044', { forceNetworkError: true }).as('network-error')
 
     cy.visit('http://localhost:3000')
