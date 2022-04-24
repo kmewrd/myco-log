@@ -13,7 +13,9 @@ const ListItem = ({ id, name, scientificName, imageUrl }) => {
         <h4>{scientificName}</h4>
       </div>
       <Link to={`/explore/${id}`}>
-        <FiArrowRight color='F77F4F' size='2em' />
+        <div aria-label={`View ${name} details`}>
+          <FiArrowRight color='F77F4F' size='2em' />
+        </div>
       </Link>
     </div>
   )

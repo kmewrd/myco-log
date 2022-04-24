@@ -42,7 +42,9 @@ const DetailPage = ({ id }) =>{
         <img src={fungus.imageUrl} alt='' />
         <div className='fungus-header'>
           <Link to='/explore'>
-            <FiArrowLeft color='F77F4F' size='2em' />
+            <div aria-label='Back to previous page'>
+              <FiArrowLeft color='F77F4F' size='2em' />
+            </div>
           </Link>
           <div className='fungus-names'>
             <h2>{fungus.name}</h2>
