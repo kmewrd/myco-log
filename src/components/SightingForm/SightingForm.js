@@ -9,6 +9,7 @@ const SightingForm = ({ userId, fungusId }) => {
   const [location, setLocation] = useState('');
   const [notes, setNotes] = useState('');
   const [error, setError] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
   const history = useHistory();
 
   const clearForm = () => {
@@ -27,10 +28,11 @@ const SightingForm = ({ userId, fungusId }) => {
       postSighting(sighting)
         .then(() => {
           clearForm();
+          setSuccessMsg('Sighting successfully recorded!');
         })
         .catch(err => setError('Something went wrong. Please try again later.'))
     } else {
-      setError('Please complete all required fields.' );
+      setError('Please complete all fields.' );
     }
   }
 
@@ -59,6 +61,7 @@ const SightingForm = ({ userId, fungusId }) => {
           <textarea type='textarea' name='notes' id='notes'value={notes} onChange={e => setNotes(e.target.value)}></textarea>
         </div>
         {error && <p>{error}</p>}
+        {successMsg && <p>{successMsg}</p>}
         <button className='submit-button' onClick={e => submitSighting(e)}>SUBMIT</button>
       </form>
     </section>

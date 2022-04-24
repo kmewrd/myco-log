@@ -6,7 +6,7 @@ import './ListItem.scss';
 
 const ListItem = ({ id, name, scientificName, imageUrl }) => {
   return (
-    <div className='list-item'>
+    <div className='list-item' id={id}>
       <img src={imageUrl} alt='' />
       <div className='list-item-names'>
         <h3>{name}</h3>
