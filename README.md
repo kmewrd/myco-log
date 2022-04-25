@@ -13,7 +13,7 @@ Myco-Log is the final solo project built during Mod 3 of Turing School of Softwa
 - Use Asynchronous JavaScript to send and retrieve data from an API
 - Write end-to-end tests with Cypress
 
-<!-- <img width="1440" alt="Login page for Travel Tracker website" src="https://user-images.githubusercontent.com/79027364/156955676-2ca728dd-72d9-41e5-8c7f-8603ab0f8617.png"> -->
+<img width="1440" alt="Login page for Myco-Log" src="https://user-images.githubusercontent.com/79027364/165003112-e79b147e-14dd-408a-8d72-e089c8e9edd7.png">
 
 ## How to Run
 
@@ -27,14 +27,20 @@ Myco-Log is the final solo project built during Mod 3 of Turing School of Softwa
 ## Features
 
 **Login:**
-<!-- On load, the user user sees a login form. To log in, enter `traveler` followed by a number between 1 and 50 in the username field. The password for all users is `travel`. -->
+On page load, the user sees a login form. To log in, enter `mycophile5044` as the username and `fungi` as the password.
 
-**User Dashboard:**
-<!-- Once logged in, a user can see all of their trips displayed and sorted by date according to trip type (upcoming, pending, or past). The header also includes the stats on how much they've spent on trips this year. -->
+**Dashboard:**
+After a successful login the user is redirected to their dashboard, which contains their geographic region, stats, and a list of all their mushroom sightings. Sightings can be permanently deleted by clicking the delete button on a card.
+
+<img width="1439" alt="Myco-Log dashboard view" src="https://user-images.githubusercontent.com/79027364/165003280-ed1295cb-70d7-4953-bb63-795ad0e3d46c.png">
 
 **Explore Page:**
+To discover fungi local to their geographic region, users can navigate to the Explore page. This page retrieves a list of regional fungi including an image, common name, and scientific name. To view more detailed information about a specific fungus, simply tap the arrow button.
 
 **Detail View:**
+The detail page for each fungus includes additional information such as common regions where it's found and a short description. In the future, I would love to expand this page to include ecology, spore print, and more.
+
+![Explore and detail page demo](https://user-images.githubusercontent.com/79027364/165003810-9311ad4f-dcc7-44dd-b17e-0177f4044be0.gif)
 
 **Record A Sighting:**
 
