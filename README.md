@@ -55,11 +55,13 @@ From the Explore page, users can filter fungi listings by entering terms in the 
 #### Mobile First Design
 This application was designed first and foremost for mobile devices. It is best viewed on small screens, but the layout is responsive and adjusts to tablet and desktop views as well. It is expected that users will be using this application while outside their home.
 
+![Mobile view](https://user-images.githubusercontent.com/79027364/165005459-f17d95d0-0c63-4f5d-90ca-387cacacb44d.gif)
+
 ---
 
 ### Technologies Used
-- JavaScript
 - React
+- JavaScript
 - React Router
 - Typechecking w/ PropTypes
 - Express
