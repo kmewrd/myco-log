@@ -7,7 +7,7 @@ const Header = ({ isLoggedIn, logout }) => {
   return (
     <header>
       <NavLink to='/' style={{ color: '#fff', textDecoration: 'none'}}>
-        <h1 className='logotype'>Myco-log</h1>
+        <h1 className='logotype'>Myco-Log</h1>
       </NavLink>
       {isLoggedIn && <button onClick={e => logout(e)}>LOG OUT</button>}
     </header>
