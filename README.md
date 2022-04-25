@@ -2,9 +2,9 @@
 
 **A front end application built by Kim Ward.**
 
-Myco-Log is the final solo project built during Mod 3 of Turing School of Software & Design.
+Myco-Log is the final solo project built during Mod 3 of Turing School of Software & Design. For emerging mushroom enthusiasts, this is the perfect application to discover common fungi in your region and record sightings in the wild! 
 
-<!-- This project focused on using Test Driven Development and Object Oriented Programming to build an interactive travel site where users can log in to view their trips and book a new trip. The Fetch API was used to retrieve and post data. Specifications for this project can be found [here](https://frontend.turing.edu/projects/module-3/showcase.html). -->
+Visit the deployed site here: [Myco-Log](https://myco-log.herokuapp.com/)
 
 ## Goals
 
@@ -59,6 +59,10 @@ This application was designed first and foremost for mobile devices. It is best 
 
 ---
 
+### Project Challenges
+
+### Project Wins
+
 ### Technologies Used
 - React
 - JavaScript
@@ -76,3 +80,7 @@ This application was designed first and foremost for mobile devices. It is best 
 
 #### Design Inspiration
 The light and neutral earth-toned palette was inspired by Dribble creator Matthew Gledhill's [Interior Design Website](https://dribbble.com/shots/9523892-Interior-Design-Website-Concept). The style of the listings on the Explore page were borrowed from Daniel Wiklund's [Mushroom app](https://dribbble.com/shots/1285755-Mushroom-app) on Dribbble.
+
+#### Credit
+
+- Arrow icons from [React Icons](https://react-icons.github.io/react-icons)
