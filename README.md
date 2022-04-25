@@ -48,12 +48,12 @@ To record a sighting in the wild, a user can navigate to the fungus they want to
 ![Demo of the sighting submission process](https://user-images.githubusercontent.com/79027364/165004215-61a2bf3d-0c67-40c3-b7a9-b31143120d94.gif)
 
 **Search & Filter:**
+From the Explore page, users can filter fungi listings by entering terms in the search bar. This feature filters listings based on the fungus's name and characteristics. Users can clear the search terms to view all listings again.
 
-
+![Demo of search and filter feature](https://user-images.githubusercontent.com/79027364/165004834-1b210d3f-b4e6-431d-95b1-d020b3ead692.gif)
 
 #### Mobile First Design
-This application was designed first and foremost for mobile devices. It is best viewed on small screens, but the layout is responsive and adjusts to tablet and desktop views as well. It is expected that users will be using this application while outside of their home.
-
+This application was designed first and foremost for mobile devices. It is best viewed on small screens, but the layout is responsive and adjusts to tablet and desktop views as well. It is expected that users will be using this application while outside their home.
 
 ---
 
@@ -61,6 +61,7 @@ This application was designed first and foremost for mobile devices. It is best 
 - JavaScript
 - React
 - React Router
+- Typechecking w/ PropTypes
 - Express
 - SCSS
 - HTML
