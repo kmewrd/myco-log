@@ -65,7 +65,7 @@ const App = () => {
     <div>
       <Header isLoggedIn={isLoggedIn} logout={logout} />
       <main>
-        {error && <p className='error-message'>{error}</p>}
+        {error && <div className='error-message top-bar'><p>{error}</p></div>}
         {!isLoggedIn && (<img className='background-image' src='https://images.unsplash.com/photo-1543904856-8257e34283d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2592&q=80' alt='Three small, light-colored mushrooms with long stems cling to a patch of damp bark.' />)}
         <Switch>
           <Route exact path='/'>
