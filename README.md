@@ -43,10 +43,16 @@ The detail page for each fungus includes additional information such as common r
 ![Explore and detail page demo](https://user-images.githubusercontent.com/79027364/165003810-9311ad4f-dcc7-44dd-b17e-0177f4044be0.gif)
 
 **Record A Sighting:**
+To record a sighting in the wild, a user can navigate to the fungus they want to record and press the Record Sighting button. This brings the user to a form where they can enter a date, location, and any notes they'd like to include. After successful submission, the sighting can now be viewed on the user's dashboard.
+
+![Demo of the sighting submission process](https://user-images.githubusercontent.com/79027364/165004215-61a2bf3d-0c67-40c3-b7a9-b31143120d94.gif)
+
+**Search & Filter:**
+
 
 
 #### Mobile First Design
-
+This application was designed first and foremost for mobile devices. It is best viewed on small screens, but the layout is responsive and adjusts to tablet and desktop views as well. It is expected that users will be using this application while outside of their home.
 
 
 ---
