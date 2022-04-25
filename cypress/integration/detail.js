@@ -42,8 +42,8 @@ describe('Detail page', () => {
       .should('contain', 'Pacific')
   })
 
-  it('should contain a link that takes the user back to the Explore page', () => {
-    cy.get('a:first')
+  it.only('should contain a link that takes the user back to the Explore page', () => {
+    cy.get('div[aria-label="Back to previous page"]')
       .click()
       .url()
       .should('eq', 'http://localhost:3000/explore')
