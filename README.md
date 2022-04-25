@@ -2,9 +2,11 @@
 
 **A front end application built by Kim Ward.**
 
-Myco-Log is the final solo project built during Mod 3 of Turing School of Software & Design. For emerging mushroom enthusiasts, this is the perfect application to discover common fungi in your region and record sightings in the wild! 
+Myco-Log is the final solo project built during Mod 3 of Turing School of Software & Design. For emerging mushroom enthusiasts, this is the perfect application to discover common fungi in your region and record sightings in the wild! This app was designed for mobile first, but is responsive for various screen sizes.
 
 Visit the deployed site here: [Myco-Log](https://myco-log.herokuapp.com/)
+
+View wireframes on Figma: [Myco-Log Wireframes](https://www.figma.com/file/7n6XyOI7JQknK1UQ2xbrCt/U.F.O.---Unidentified-Fungus-Outdoors?node-id=0%3A1)
 
 ## Goals
 
@@ -60,18 +62,29 @@ This application was designed first and foremost for mobile devices. It is best 
 ---
 
 ### Project Challenges
+This project was not without its challenges! React recently released v18, which has compatibility issues with React Router v5 (used in this project). Being relatively new to Router, I puzzled over routing issues with components not displaying correctly until I realized it could be solved by moving `<React.StrictMode>` to the inside of my `<BrowserRouter>` component.
+
+This project is the first I've built without class components, opting instead to use functional components with hooks. It took some getting used to and I started by using class components and refactoring them halfway through. By the end of the project, I felt confident that I could quickly create another application using only functional components.
 
 ### Project Wins
+- Extensive end to end testing with Cypress
+- Typechecking with PropTypes
+- Implementing React Hooks such as `useState` and `useEffect`
+- Building out my own API with Express, including endpoints for POST and DELETE
+- Deploying my API and application to Heroku
 
 ### Technologies Used
 - React
+- React Hooks
 - JavaScript
 - React Router
-- Typechecking w/ PropTypes
+- PropTypes
 - Express
+- Postman
 - SCSS
 - HTML
 - Cypress
+- Heroku
 - VS Code
 
 #### Future Additions & Improvements
