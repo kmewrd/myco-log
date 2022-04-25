@@ -61,7 +61,6 @@
   }
 
   .record-sighting-button {
-    width: 278px;
     margin-top: 1em;
   }
 
@@ -75,11 +74,11 @@
   .region {
     box-sizing: border-box;
     height: 40px;
-    width: 180px;
+    width: 160px;
     border: 3px solid $olive-green;
     color: $olive-green;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
