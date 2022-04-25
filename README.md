@@ -8,6 +8,8 @@ Visit the deployed site here: [Myco-Log](https://myco-log.herokuapp.com/)
 
 View wireframes on Figma: [Myco-Log Wireframes](https://www.figma.com/file/7n6XyOI7JQknK1UQ2xbrCt/U.F.O.---Unidentified-Fungus-Outdoors?node-id=0%3A1)
 
+Read the specs: [Project Specs](https://frontend.turing.edu/projects/module-3/showcase.html)
+
 ## Goals
 
 - Use React's component-based architecture to design and build an application
